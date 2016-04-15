@@ -1,0 +1,457 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"is",
+				"isRequired"
+			],
+			[
+				"TransParamsH",
+				"TransParamsHelper"
+			],
+			[
+				"act",
+				"acttypes"
+			],
+			[
+				"s",
+				"settings"
+			],
+			[
+				"i",
+				"import"
+			],
+			[
+				"Na",
+				"NavItem"
+			],
+			[
+				"co",
+				"console"
+			],
+			[
+				"mcc",
+				"mcccodes"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "import React, { PropTypes } from 'react';\n\nconst NewParamForm = ({addNewParameter,loadMCCCodes,mccCodes}) => {\n	return (\n		div.input-group > span\n		);\n};\n\nexport default NewParamForm;",
+			"file": "client/src/components/NewParamForm.js",
+			"file_size": 164,
+			"file_write_time": 131051974836026644,
+			"settings":
+			{
+				"buffer_size": 183,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nEmmet\n-----\n\n  Thank you for installing Emmet -- a toolkit that can greatly improve your workflow. Note that this plugin automatically downloads and installs PyV8 binary (see status bar message). \n  \n  ******************************\n  Please restart editor \n  to finish installation process \n  after PyV8 was downloaded.\n  ******************************\n  \n  Tab key handler\n  ==========================\n  \n  By default, Emmet allows you to expand abbreviations with Tab key in HTML, XML, HAML and CSS/SASS/LESS/Stylus documents. As a side effect, you can’t use some of your ST2 snippets.\n  \n  Please read https://github.com/sergeche/emmet-sublime#tab-key-handler about how Tab handler works and how to tweak its behavior to match your needs.\n  \n  Enter key\n  ==========================\n  \n  In HTML and XML documents, Emmet overrides Enter key to insert formatted line breaks between opening and closing tags. In some cases it will break character input (for example, in Japanese language).\n  \n  To disable Enter key handler, simply add the following option in your user's Preferences file:\n  \n  \"disable_formatted_linebreak\": true\n  \n  Actions shortcuts\n  ==========================\n  \n  Emmet has a number of actions with keyboard shortcuts that may override ones you're using commonly (for example, Ctrl-E or Ctrl-Down). Please read the project main page to get list of available actions and keyboard shortcuts and how to disable them:\n  https://github.com/sergeche/emmet-sublime\n  \n  Documentation and examples:\n  http://emmet.io\n  \n  ------------------------------\n  Follow me on Twitter: @emmetio\n  ------------------------------\n",
+			"settings":
+			{
+				"buffer_size": 1688,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "client/src/containers/GenTransactionsPage.js",
+			"settings":
+			{
+				"buffer_size": 1947,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/components/GenParams.js",
+			"settings":
+			{
+				"buffer_size": 215,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/businessLogic/TransParam.js",
+			"settings":
+			{
+				"buffer_size": 239,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 196.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"js",
+				"JSHint"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 528.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by) "
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/dev/cards",
+		"/C/dev/cards/client",
+		"/C/dev/cards/client/src",
+		"/C/dev/cards/client/src/actions",
+		"/C/dev/cards/client/src/businessLogic",
+		"/C/dev/cards/client/src/components",
+		"/C/dev/cards/client/src/constants",
+		"/C/dev/cards/client/src/containers",
+		"/C/dev/cards/client/src/reducers",
+		"/C/dev/cards/client/src/store",
+		"/C/dev/cards/client/src/styles",
+		"/C/dev/cards/client/src/styles/bootstrap",
+		"/C/dev/cards/client/src/styles/bootstrap/css"
+	],
+	"file_history":
+	[
+		"/C/dev/cards/client/src/containers/GenTransactionsPage.js",
+		"/C/dev/cards/client/src/actions/GenTransActions.js",
+		"/C/dev/cards/client/src/reducers/sourceParameters.js",
+		"/C/dev/cards/client/src/reducers/index.js",
+		"/C/dev/cards/client/src/routes.js",
+		"/C/dev/cards/client/src/businessLogic/TransParam.js",
+		"/C/dev/cards/client/src/components/GenParams.js",
+		"/C/dev/cards/client/src/index.js",
+		"/C/dev/cards/client/src/components/App.js",
+		"/C/dev/cards/client/src/components/NewParamsForm.js",
+		"/C/dev/cards/client/src/reducers/newParameter.js",
+		"/C/dev/cards/client/src/constants/actionTypes.js",
+		"/C/dev/hub/react-slingshot/src/components/FuelSavingsTextInput.js",
+		"/C/dev/hub/react-slingshot/src/components/FuelSavingsResults.js",
+		"/C/dev/hub/react-slingshot/src/components/FuelSavingsForm.js",
+		"/C/dev/cards/client/src/containers/GenTransPage.spec.js",
+		"/C/dev/cards/client/src/store/configureStore.js",
+		"/C/dev/cards/client/src/store/configureStore.dev.js",
+		"/C/dev/cards/client/src/styles/bootstrap/css/bootstrap-theme.css",
+		"/C/dev/cards/client/package.json",
+		"/C/dev/cards/client/webpack.config.dev.js",
+		"/C/dev/cards/client/webpack.config.prod.js",
+		"/C/dev/hub/react-slingshot/src/routes.js",
+		"/C/dev/hub/react-slingshot/src/index.js",
+		"/C/dev/cards/server/lib/mccodes.js",
+		"/C/dev/cards/server/lib/configuration.js",
+		"/C/dev/cards/server/test/webserver_test.js",
+		"/C/dev/cards/server/lib/server.js",
+		"/C/dev/cards/server/test/websocket_test.js",
+		"/C/dev/git/AuroraATEngine/AuroraATEngine/SunTotem.AuroraATEngine.nuspec",
+		"/C/Users/neradovskiy_kl/Documents/workspace/robotest/src/ROBOTESTN/MAINFORM.form",
+		"/C/Users/neradovskiy_kl/Documents/Карты/ic160406.001"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"12",
+			"s"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "client/src/components/NewParamForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 183,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								123,
+								123
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1688,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								342,
+								342
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 108.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/src/containers/GenTransactionsPage.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1947,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								455,
+								455
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "client/src/components/GenParams.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 215,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								214,
+								187
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "client/src/businessLogic/TransParam.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								94,
+								94
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "cards.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 266.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
