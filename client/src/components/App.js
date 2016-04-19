@@ -4,14 +4,17 @@ import { Nav, NavItem } from 'react-bootstrap';
 
 const App = (props) => {
   return (
+    <div className="container-fluid">
     <div className="row">
-    <div className="col-lg-12 col-lg-offset-3 text-center">
+    <div class="col-xl-1">{' '}</div>
+    <div className="col-xl-10 container-fluid">
     <Nav bsStyle="pills">    	
       <NavItem href="/">Генерация транзакций</NavItem>
       <NavItem href="/GenerateTransactions">Транзакции</NavItem>
     </Nav>
       <br/>
       {props.children}
+    </div>
     </div>
     </div>
   );
