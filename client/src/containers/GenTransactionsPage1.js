@@ -12,13 +12,12 @@ export class GenTransactionsPage extends Component {
     return (
       <div>
       <NewParamForm
-        updateParameter = {this.props.actions.updateParameter}
+        addNewParameter = {this.props.actions.addNewParameter}
         loadMCCCodes = {this.props.actions.loadMCCCodes}
         mccCodes = {this.props.mccCodes}
-        param = {this.props.param}
       />
-      <br/>
-      <Button bsStyle="success" onClick={(e)=> this.props.actions.addNewParameter(this.props.param)}>Добавить</Button>
+      <Button bsStyle="primary" onClick={()=>this.props.actions.addNewParameter("a","b","c","d","e")}>Новый параметр</Button>
+      <Button bsStyle="warning">Генерация</Button>
       <br/>
       <BootstrapTable data={this.props.sourceParameters} striped={true} hover={true}>
           <TableHeaderColumn isKey={true} dataField="type">Product ID</TableHeaderColumn>
@@ -27,7 +26,6 @@ export class GenTransactionsPage extends Component {
           <TableHeaderColumn dataField="currency">Product Price</TableHeaderColumn>      
           <TableHeaderColumn dataField="amount">Product Price</TableHeaderColumn>      
       </BootstrapTable>
-      <Button bsStyle="warning">Генерация</Button>
       </div>
     );
   }
@@ -36,17 +34,15 @@ export class GenTransactionsPage extends Component {
 GenTransactionsPage.propTypes = {
   actions: PropTypes.object.isRequired,
   appState: PropTypes.object.isRequired,
-  sourceParameters: PropTypes.array.isRequired,
-  mccCodes: PropTypes.array.isRequired,
-  param:PropTypes.object.isRequired
+  sourceParameters: PropTypes.object.isRequired,
+  mccCodes: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state) {
   return {
     appState: {  },
     mccCodes: [],
-    sourceParameters : state.sourceParameters,
-    param : state.updateParameter
+    sourceParameters : state.sourceParameters
   };
 }
 

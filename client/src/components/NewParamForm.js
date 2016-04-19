@@ -1,55 +1,46 @@
 import React, { PropTypes } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Input } from 'react-bootstrap';
 
-const NewParamForm = ({addNewParameter,loadMCCCodes,mccCodes}) => {
-	const types = [{type:'P',desc:"Прямой"},{type:'R',desc:"Обратный"}]
-	const currencies = [{code:'810',desc:"Рубль"},{type:'840',desc:"USD"}]
-	const initial = {
-		type: 'P',
-		mcc: '7211',
-		card: '4500000012345678',
-		currency: '810',
-		amount: '0'
+const NewParamForm = ({updateParameter,mccCodes,param}) => {
+	const types = [{type:'P',desc:"Прямой"},{type:'R',desc:"Обратный"}];
+	const currencies = [{code:'810',desc:"Рубль"},{code:'840',desc:"USD"}];
+	const fieldChanged = (e) => {
+		updateParameter(e.target.name,e.target.value);
 	};
-	const addNewParam = (e) => {
-		console.log(e);
-	}
-	let opt,cur;
 	return (
 		<form>
+			<div>
 			<div className="input-group">
 				<span className="input-group-addon">Тип</span>
-				<select name="type" id="inType" value={initial.type}>
-					for(opt in this.types) {<option value={opt.type}>{opt.desc}</option>};
+				<select name="type" id="inType" value={param.type} onChange={fieldChanged}>
+				{types.map((e,i) => <option value={e.type}>{e.desc}</option>)}
 				</select>
 			</div> 
-			<div className="input-group">
-				<span className="input-group-addon">MCC</span>
-				<input type="text" name="mcc" value={initial.mcc}/>
-			</div>
+			<Input type="text" addonBefore="MCC" value={param.mcc} onChange={fieldChanged}/>
 			<div className="input-group">
 				<span className="input-group-addon">Номер карты</span>
-				<input type="text" name="card" value={initial.card}/>
+				<input type="text" name="card" value={param.card} onChange={fieldChanged}/>
 			</div>
 			<div className="input-group">
 				<span className="input-group-addon">Валюта</span>
-				<select name="currency" id="inCur" value={initial.currency}>
-					for(cur in currencies) <option value={cur.code}>{cur.desc}</option>;
+				<select name="currency" id="inCur" value={param.currency} onChange={fieldChanged}>
+				{currencies.map((cur,i,k)=> <option value={cur.code}>{cur.desc}</option>)}
 				</select>
 			</div>
 			<div className="input-group">
 				<span className="input-group-addon">Количество</span>
-				<input type="text" name="amount" value={initial.amount}/>
+				<input type="text" name="amount" value={param.amount} onChange={fieldChanged}/>
 			</div>
-			<Button bsStyle="regular" onClick={addNewParam}>Добавить</Button>
+			
+			</div>
 		</form>
 		);
 };
 
 NewParamForm.propTypes = {
-	addNewParameter: PropTypes.func.isRequired,
-	loadMCCCodes: PropTypes.func.isRequired,
-	mccCodes: PropTypes.func.isRequired
+	updateParameter: PropTypes.func.isRequired,
+	mccCodes: PropTypes.array.isRequired,
+	param : PropTypes.object.isRequired
 };
 
 

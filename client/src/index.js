@@ -12,8 +12,15 @@ import './styles/bootstrap/css/bootstrap-theme.css';
 
 const store = configureStore();
 
+
 render(
   <Provider store={store}>
     <Router history={browserHistory} routes={routes} />
   </Provider>, document.getElementById('app')
 );
+
+/*
+render(
+	<Router history={browserHistory} routes={routes} />
+	)
+*/

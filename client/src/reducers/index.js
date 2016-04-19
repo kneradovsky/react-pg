@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import sourceParameters from './sourceParameters';
+import loadCodes from './loadCodes';
 
 const rootReducer = combineReducers({
-	sourceParameters
+	sourceParameters,
+	loadCodes
 });
 
 export default rootReducer;

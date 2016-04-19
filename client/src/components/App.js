@@ -7,8 +7,8 @@ const App = (props) => {
     <div className="row">
     <div className="col-lg-12 col-lg-offset-3 text-center">
     <Nav bsStyle="pills">    	
-      <NavItem><IndexLink to="/">Генерация транзакций</IndexLink></NavItem>
-      <NavItem><Link to="/GenerateTransactions">Транзакции</Link></NavItem>
+      <NavItem href="/">Генерация транзакций</NavItem>
+      <NavItem href="/GenerateTransactions">Транзакции</NavItem>
     </Nav>
       <br/>
       {props.children}
