@@ -1,5 +1,7 @@
 import React, { PropTypes } from 'react';
 import { Button, Input } from 'react-bootstrap';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
 
 export class NewParamForm extends React.Component {
 	static defaultProps = {
@@ -10,22 +12,23 @@ export class NewParamForm extends React.Component {
 			currency:'810',
 			amount:'1000'		
 		},
-		mccCodes : [],
-		loadMCCCodes : () => [],
+		mccodes : [],
+		currencies: [],
 		addNewParameter: (p) => {}
+
 	}
 	static propTypes = {
 		addNewParameter: PropTypes.func.isRequired,
-		loadMCCCodes: PropTypes.func.isRequired,
-		mccCodes: PropTypes.array.isRequired,
-		param : PropTypes.object.isRequired
+		mccodes: PropTypes.array.isRequired,
+		param : PropTypes.object.isRequired,
+		currencies: PropTypes.array.isRequired
 	}	
 	state = {
 		...this.props.param
 	}
 
 	types = [{type:'P',desc:"Прямой"},{type:'R',desc:"Обратный"}]
-	currencies = [{code:'810',desc:"Рубль"},{code:'840',desc:"USD"}]
+	//currencies = [{code:'810',desc:"Рубль"},{code:'840',desc:"USD"}]
 
 	fieldChanged = (e) => {
 		let newState = {...this.state};
@@ -38,6 +41,7 @@ export class NewParamForm extends React.Component {
 	}
 
 	render() {
+		console.log(this.props);
 		return(
 		<form>
 			<div>
@@ -47,7 +51,7 @@ export class NewParamForm extends React.Component {
 			<Input type="text" name="mcc" addonBefore="MCC" value={this.state.mcc} onChange={this.fieldChanged}/>
 			<Input type="text" name="card" addonBefore="Карта" value={this.state.card} onChange={this.fieldChanged}/>
 			<Input type="select" name="currency" addonBefore="Валюта" value={this.state.currency} onChange={this.fieldChanged}>
-				{this.currencies.map((cur,i,k)=> <option value={cur.code}>{cur.desc}</option>)}
+				{this.props.currencies.map((cur,i,k)=> <option value={cur.code}>{cur.name}</option>)}
 			</Input>
 			<Input type="text" name="amount" addonBefore="Количество" value={this.state.amount} onChange={this.fieldChanged}/>
 			<Button bsStyle="success" onClick={this.addParameter}>Добавить</Button>
@@ -59,4 +63,22 @@ export class NewParamForm extends React.Component {
 
 
 
-export default NewParamForm;
+function mapStateToProps(state) {
+  console.log(state);
+  return {
+    mccodes: state.mccodes,
+    currencies: state.currencies
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {};
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NewParamForm);
+
+
+//export default NewParamForm;

@@ -4,6 +4,82 @@
 		"selected_items":
 		[
 			[
+				"param",
+				"paramSetName〔variable〕"
+			],
+			[
+				"pa",
+				"paramSetName"
+			],
+			[
+				"paramS",
+				"paramSetName"
+			],
+			[
+				"p",
+				"paramSetName"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"ta",
+				"target"
+			],
+			[
+				"pata",
+				"paramsets"
+			],
+			[
+				"curr",
+				"currencies"
+			],
+			[
+				"d",
+				"dictionaries"
+			],
+			[
+				"ac",
+				"acttypes"
+			],
+			[
+				"get",
+				"getMCCCodes"
+			],
+			[
+				"add",
+				"addonBefore"
+			],
+			[
+				"curren",
+				"currency"
+			],
+			[
+				"new",
+				"newParam"
+			],
+			[
+				"Na",
+				"NavItem"
+			],
+			[
+				"addNew",
+				"addNewParameter"
+			],
+			[
+				"Pro",
+				"PropTypes"
+			],
+			[
+				"cu",
+				"currencies"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
 				"is",
 				"isRequired"
 			],
@@ -24,10 +100,6 @@
 				"import"
 			],
 			[
-				"Na",
-				"NavItem"
-			],
-			[
 				"co",
 				"console"
 			],
@@ -40,48 +112,66 @@
 	"buffers":
 	[
 		{
-			"contents": "import React, { PropTypes } from 'react';\n\nconst NewParamForm = ({addNewParameter,loadMCCCodes,mccCodes}) => {\n	return (\n		div.input-group > span\n		);\n};\n\nexport default NewParamForm;",
-			"file": "client/src/components/NewParamForm.js",
-			"file_size": 164,
-			"file_write_time": 131051974836026644,
+			"file": "client/src/reducers/index.js",
 			"settings":
 			{
-				"buffer_size": 183,
+				"buffer_size": 286,
 				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Package Control Messages\n========================\n\nEmmet\n-----\n\n  Thank you for installing Emmet -- a toolkit that can greatly improve your workflow. Note that this plugin automatically downloads and installs PyV8 binary (see status bar message). \n  \n  ******************************\n  Please restart editor \n  to finish installation process \n  after PyV8 was downloaded.\n  ******************************\n  \n  Tab key handler\n  ==========================\n  \n  By default, Emmet allows you to expand abbreviations with Tab key in HTML, XML, HAML and CSS/SASS/LESS/Stylus documents. As a side effect, you can’t use some of your ST2 snippets.\n  \n  Please read https://github.com/sergeche/emmet-sublime#tab-key-handler about how Tab handler works and how to tweak its behavior to match your needs.\n  \n  Enter key\n  ==========================\n  \n  In HTML and XML documents, Emmet overrides Enter key to insert formatted line breaks between opening and closing tags. In some cases it will break character input (for example, in Japanese language).\n  \n  To disable Enter key handler, simply add the following option in your user's Preferences file:\n  \n  \"disable_formatted_linebreak\": true\n  \n  Actions shortcuts\n  ==========================\n  \n  Emmet has a number of actions with keyboard shortcuts that may override ones you're using commonly (for example, Ctrl-E or Ctrl-Down). Please read the project main page to get list of available actions and keyboard shortcuts and how to disable them:\n  https://github.com/sergeche/emmet-sublime\n  \n  Documentation and examples:\n  http://emmet.io\n  \n  ------------------------------\n  Follow me on Twitter: @emmetio\n  ------------------------------\n",
-			"settings":
-			{
-				"buffer_size": 1688,
-				"line_ending": "Windows",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
 			}
 		},
 		{
 			"file": "client/src/containers/GenTransactionsPage.js",
 			"settings":
 			{
-				"buffer_size": 1947,
+				"buffer_size": 3838,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "client/src/components/GenParams.js",
+			"file": "client/src/components/NewParamForm.js",
 			"settings":
 			{
-				"buffer_size": 215,
+				"buffer_size": 2216,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "client/src/businessLogic/TransParam.js",
+			"file": "client/src/reducers/sourceParameters.js",
 			"settings":
 			{
-				"buffer_size": 239,
+				"buffer_size": 561,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/components/App.js",
+			"settings":
+			{
+				"buffer_size": 640,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/actions/dataactions.js",
+			"settings":
+			{
+				"buffer_size": 1224,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/reducers/dictionaries.js",
+			"settings":
+			{
+				"buffer_size": 836,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/constants/actionTypes.js",
+			"settings":
+			{
+				"buffer_size": 500,
 				"line_ending": "Windows"
 			}
 		}
@@ -135,36 +225,50 @@
 		"/C/dev/cards/client",
 		"/C/dev/cards/client/src",
 		"/C/dev/cards/client/src/actions",
-		"/C/dev/cards/client/src/businessLogic",
 		"/C/dev/cards/client/src/components",
 		"/C/dev/cards/client/src/constants",
 		"/C/dev/cards/client/src/containers",
+		"/C/dev/cards/client/src/lib",
 		"/C/dev/cards/client/src/reducers",
 		"/C/dev/cards/client/src/store",
 		"/C/dev/cards/client/src/styles",
 		"/C/dev/cards/client/src/styles/bootstrap",
-		"/C/dev/cards/client/src/styles/bootstrap/css"
+		"/C/dev/cards/client/src/styles/bootstrap/css",
+		"/C/dev/cards/client/src/styles/bootstrap/js"
 	],
 	"file_history":
 	[
+		"/C/dev/cards/client/src/reducers/dictionaries.js",
+		"/C/dev/cards/client/src/components/NewParamForm.js",
+		"/C/dev/cards/client/src/containers/GenTransPage.spec.js",
+		"/C/dev/cards/client/src/constants/actionTypes.js",
 		"/C/dev/cards/client/src/containers/GenTransactionsPage.js",
-		"/C/dev/cards/client/src/actions/GenTransActions.js",
+		"/C/dev/cards/client/src/constants/backend.js",
+		"/C/dev/cards/client/src/store/configureStore.dev.js",
+		"/C/dev/cards/client/src/actions/dataactions.js",
+		"/C/dev/cards/client/src/components/App.js",
 		"/C/dev/cards/client/src/reducers/sourceParameters.js",
+		"/C/dev/cards/client/src/actions/parameters.js",
+		"/C/dev/cards/client/src/store/configureStore.prod.js",
+		"/C/dev/cards/client/src/index.js",
+		"/C/dev/cards/client/src/lib/promiseMiddleware.js",
+		"/C/dev/cards/client/src/actions/dictionaries.js",
+		"/C/dev/cards/client/src/reducers/loadCodes.js",
+		"/C/dev/cards/client/src/actions/GenTransActions.js",
+		"/C/dev/cards/client/src/reducers/updateParameter.js",
 		"/C/dev/cards/client/src/reducers/index.js",
-		"/C/dev/cards/client/src/routes.js",
 		"/C/dev/cards/client/src/businessLogic/TransParam.js",
 		"/C/dev/cards/client/src/components/GenParams.js",
-		"/C/dev/cards/client/src/index.js",
-		"/C/dev/cards/client/src/components/App.js",
+		"/C/dev/cards/client/src/components/ParamTextInput.js",
+		"/C/dev/cards/client/src/index.html",
+		"/C/dev/cards/client/src/containers/GenTransactionsPage1.js",
+		"/C/dev/cards/client/src/routes.js",
 		"/C/dev/cards/client/src/components/NewParamsForm.js",
 		"/C/dev/cards/client/src/reducers/newParameter.js",
-		"/C/dev/cards/client/src/constants/actionTypes.js",
 		"/C/dev/hub/react-slingshot/src/components/FuelSavingsTextInput.js",
 		"/C/dev/hub/react-slingshot/src/components/FuelSavingsResults.js",
 		"/C/dev/hub/react-slingshot/src/components/FuelSavingsForm.js",
-		"/C/dev/cards/client/src/containers/GenTransPage.spec.js",
 		"/C/dev/cards/client/src/store/configureStore.js",
-		"/C/dev/cards/client/src/store/configureStore.dev.js",
 		"/C/dev/cards/client/src/styles/bootstrap/css/bootstrap-theme.css",
 		"/C/dev/cards/client/package.json",
 		"/C/dev/cards/client/webpack.config.dev.js",
@@ -196,6 +300,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"param",
+			"}\n",
+			"initial",
+			"param",
+			"initial",
+			"target",
 			"12",
 			"s"
 		],
@@ -215,24 +325,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "client/src/components/NewParamForm.js",
+					"file": "client/src/reducers/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 183,
+						"buffer_size": 286,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								123,
-								123
+								257,
+								257
 							]
 						],
 						"settings":
@@ -244,54 +354,113 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1688,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								342,
-								342
-							]
-						],
-						"settings":
-						{
-							"auto_indent": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_width": 2,
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 108.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "client/src/containers/GenTransactionsPage.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1947,
+						"buffer_size": 3838,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								455,
-								455
+								676,
+								676
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 46.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "client/src/components/NewParamForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2216,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "client/src/reducers/sourceParameters.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 561,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								554,
+								554
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "client/src/components/App.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 640,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								238,
+								238
 							]
 						],
 						"settings":
@@ -305,52 +474,82 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "client/src/components/GenParams.js",
+					"buffer": 5,
+					"file": "client/src/actions/dataactions.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 215,
+						"buffer_size": 1224,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								214,
-								187
+								1039,
+								1059
 							]
 						],
 						"settings":
 						{
+							"auto_complete": false,
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
+						},
+						"translation.x": -0.0,
+						"translation.y": 114.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "client/src/reducers/dictionaries.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 836,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								616,
+								616
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "client/src/businessLogic/TransParam.js",
+					"buffer": 7,
+					"file": "client/src/constants/actionTypes.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 239,
+						"buffer_size": 500,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								94,
-								94
+								336,
+								336
 							]
 						],
 						"settings":
@@ -362,7 +561,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]

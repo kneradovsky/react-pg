@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { GenTransactionsPage } from './GenTransactionsPage';
-import TransParams from '../components/GenParams';
+import { NewParamForm } from '../components/NewParamForm';
 import { Button } from 'react-bootstrap';
 
 describe('<GenTransactionsPage />', () => {
@@ -13,16 +13,16 @@ describe('<GenTransactionsPage />', () => {
     const appState = { };
     const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState}/>);
 
-    expect(wrapper.find(Button)).to.be.length(2);
+    expect(wrapper.find(Button)).to.be.length(3);
   });
-  it('should contain <TransParams />', () => {
+  it('should contain <NewParamForm />', () => {
     const actions = {
       generateTransactions: () => { },
     };
     const appState = { };
     const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState}/>);
 
-    expect(wrapper.find(TransParams)).to.be.length(1);
+    expect(wrapper.find(NewParamForm)).to.be.length(1);
   });
 
 });

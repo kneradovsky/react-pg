@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
 import sourceParameters from './sourceParameters';
-import loadCodes from './loadCodes';
+import dictionaries from './dictionaries';
 
+const dicts = dictionaries();
+	
 const rootReducer = combineReducers({
-	sourceParameters,
-	loadCodes
+	sourceParameters: sourceParameters,
+	...dicts
 });
 
 export default rootReducer;

@@ -4,6 +4,7 @@
   "description": "cardservice javascript ui",
   "main": "",
   "dependencies": {
+    "axios": "0.9.1",
     "babel-preset-react": "^6.5.0",
     "react": "^15.0.1",
     "react-bootstrap": "^0.28.5",
