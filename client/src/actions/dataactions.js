@@ -31,11 +31,16 @@ export function getParameterSet(name) {
 	return {type: types.GET_PARAMETER_SET, promise:request.get(urls.parameters+'/'+name)};
 }
 
+export function deleteParameters(rowkeys) {
+	return {type: types.DELETE_PARAMETERS, data:rowkeys};
+}
+
+
 export function selectParameterSet(paramsets,name) {
 	return {type: types.SELECT_PARAMETER_SET, payload: {paramsets, name}};
 }
 
 
 export function saveParameterSet(data) {
-	return {type: types.SAVE_PARAMETER_SETS, promise: request.post(urls.parameters,data)}
+	return {type: types.SAVE_PARAMETER_SETS, promise: request.post(urls.parameters,data)};
 }

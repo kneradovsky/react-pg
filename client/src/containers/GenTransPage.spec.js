@@ -10,19 +10,12 @@ describe('<GenTransactionsPage />', () => {
     const actions = {
       generateTransactions: () => { },
     };
-    const appState = { };
-    const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState}/>);
+    const appState = { 
+      paramsets : []
+    };
+    const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState} paramsets={[]}/>);
 
     expect(wrapper.find(Button)).to.be.length(3);
-  });
-  it('should contain <NewParamForm />', () => {
-    const actions = {
-      generateTransactions: () => { },
-    };
-    const appState = { };
-    const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState}/>);
-
-    expect(wrapper.find(NewParamForm)).to.be.length(1);
   });
 
 });

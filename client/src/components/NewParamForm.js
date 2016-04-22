@@ -1,6 +1,8 @@
+/* eslint "react/jsx-key":"off" */
+
 import React, { PropTypes } from 'react';
 import { Button, Input } from 'react-bootstrap';
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 export class NewParamForm extends React.Component {
@@ -15,7 +17,6 @@ export class NewParamForm extends React.Component {
 		mccodes : [],
 		currencies: [],
 		addNewParameter: (p) => {}
-
 	}
 	static propTypes = {
 		addNewParameter: PropTypes.func.isRequired,
@@ -24,7 +25,8 @@ export class NewParamForm extends React.Component {
 		currencies: PropTypes.array.isRequired
 	}	
 	state = {
-		...this.props.param
+		...this.props.param,
+		id : 1
 	}
 
 	types = [{type:'P',desc:"Прямой"},{type:'R',desc:"Обратный"}]
@@ -38,20 +40,29 @@ export class NewParamForm extends React.Component {
 
 	addParameter= (e) => {
 		this.props.addNewParameter(this.state);
+		let newState = {...this.state};
+		newState.id=this.state.id+1;
+		this.setState(newState);	
 	}
 
 	render() {
-		console.log(this.props);
+
+		const mccCodesData = this.props.mccodes.map((c)=><option value={c.mcc}>{c.mcc+' '+c.description_ru}</option>);
+		//
 		return(
 		<form>
 			<div>
 			<Input type="select" addonBefore="Тип" name="type" value={this.state.type} onChange={this.fieldChanged}>
 				{this.types.map((e,i) => <option value={e.type}>{e.desc}</option>)}
 			</Input>
-			<Input type="text" name="mcc" addonBefore="MCC" value={this.state.mcc} onChange={this.fieldChanged}/>
+			<div className="list-group">
+			<Input type="select" name="mcc" addonBefore="MCC" value={this.state.mcc} onChange={this.fieldChanged}>
+			{mccCodesData}	
+			</Input>
+			</div>
 			<Input type="text" name="card" addonBefore="Карта" value={this.state.card} onChange={this.fieldChanged}/>
 			<Input type="select" name="currency" addonBefore="Валюта" value={this.state.currency} onChange={this.fieldChanged}>
-				{this.props.currencies.map((cur,i,k)=> <option value={cur.code}>{cur.name}</option>)}
+				{this.props.currencies.map((cur)=> <option value={cur.code}>{cur.name}</option>)}
 			</Input>
 			<Input type="text" name="amount" addonBefore="Количество" value={this.state.amount} onChange={this.fieldChanged}/>
 			<Button bsStyle="success" onClick={this.addParameter}>Добавить</Button>
