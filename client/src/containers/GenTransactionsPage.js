@@ -22,20 +22,6 @@ export class GenTransactionsPage extends Component {
     this.props.actions.getParameterSetNames();
   }
 
-  paramSetsChanged = (e) => {
-    let newState = {...this.state};
-    newState[e.target.name]=e.target.value;
-    this.setState(newState);
-    this.actions.selectParameterSet(e.target.value);
-  }
-
-
-  paramSetNameChanged = (e) => {
-    let newState = {...this.state};
-    newState[e.target.name]=e.target.value;
-    this.setState(newState);
-  }
-
   saveParamSet = (e) => {
     const nameval = this.state.paramSetName;
       const ps = this.props.sourceParameters.map((p,i) => {return {name:nameval, ...p};});
@@ -48,10 +34,14 @@ export class GenTransactionsPage extends Component {
   }
 
   fieldChanged = (e) => {
-    console.log(this.state);
     let newState = {...this.state};
     newState['paramSetName']=e.target.value;
     this.setState(newState);
+  }
+
+  componentWillReceiveProps(nextprops) {
+    if(this.state.paramSetName == '' && nextprops.paramsets.length>0)
+      this.fieldChanged({target:{value:nextprops.paramsets[0]}});    
   }
 
   parameters = this.props.sourceParameters;  
@@ -65,8 +55,7 @@ export class GenTransactionsPage extends Component {
     const options = {
       afterDeleteRow: this.props.actions.deleteParameters
     };
-    if(this.state.paramSetName == '' && this.props.paramsets.length>0)
-      this.fieldChanged({target:{value:this.props.paramsets[0]}});
+    console.log("GenTransactionsPage render")
     return (
       <div>
       <NewParamForm

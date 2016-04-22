@@ -4,6 +4,7 @@ import React, { PropTypes } from 'react';
 import { Button, Input } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import MCCodeSelect from './MCCodeSelect';
 
 export class NewParamForm extends React.Component {
 	static defaultProps = {
@@ -45,28 +46,28 @@ export class NewParamForm extends React.Component {
 		this.setState(newState);	
 	}
 
-	render() {
+	mccCodeSelected = (mcc) => {
+		let newState = {...this.state};
+		newState.mcc=mcc.id;
+		this.setState(newState);
+	}
 
-		const mccCodesData = this.props.mccodes.map((c)=><option value={c.mcc}>{c.mcc+' '+c.description_ru}</option>);
+	render() {
+		console.log("NewParamForm render");
+		//const mccCodesData = this.props.mccodes.map((c)=><option value={c.mcc}>{c.mcc+' '+c.description_ru}</option>);
 		//
 		return(
 		<form>
-			<div>
 			<Input type="select" addonBefore="Тип" name="type" value={this.state.type} onChange={this.fieldChanged}>
 				{this.types.map((e,i) => <option value={e.type}>{e.desc}</option>)}
 			</Input>
-			<div className="list-group">
-			<Input type="select" name="mcc" addonBefore="MCC" value={this.state.mcc} onChange={this.fieldChanged}>
-			{mccCodesData}	
-			</Input>
-			</div>
+			<MCCodeSelect mccodes={this.props.mccodes} onSelectionChange={this.mccCodeSelected}/>
 			<Input type="text" name="card" addonBefore="Карта" value={this.state.card} onChange={this.fieldChanged}/>
 			<Input type="select" name="currency" addonBefore="Валюта" value={this.state.currency} onChange={this.fieldChanged}>
 				{this.props.currencies.map((cur)=> <option value={cur.code}>{cur.name}</option>)}
 			</Input>
 			<Input type="text" name="amount" addonBefore="Количество" value={this.state.amount} onChange={this.fieldChanged}/>
 			<Button bsStyle="success" onClick={this.addParameter}>Добавить</Button>
-			</div>
 		</form>
 		);
 	}
