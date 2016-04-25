@@ -8,6 +8,7 @@ import NotFoundPage from './components/NotFoundPage.js';
 export default (
   <Route path="/" component={App}>
     <IndexRoute component={GenTransactionsPage} />
+    <Route path="/genTransactions" component={GenTransactionsPage}/>
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

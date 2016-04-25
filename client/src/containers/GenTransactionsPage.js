@@ -6,12 +6,14 @@ import * as actions from '../actions/dataactions';
 import { Button, Input } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import NewParamForm from '../components/NewParamForm';
+import urls from '../constants/backend';
 
 
 export class GenTransactionsPage extends Component {
   
   state = {
     paramSetName : '',
+    seqNum : '1',
     sourceParameters: this.props.sourceParameters
   }
 
@@ -35,14 +37,22 @@ export class GenTransactionsPage extends Component {
 
   fieldChanged = (e) => {
     let newState = {...this.state};
-    newState['paramSetName']=e.target.value;
+    if(e.target.name=='pset')
+      newState['paramSetName']=e.target.value;
+    else 
+      newState[e.target.name]=e.target.value;
     this.setState(newState);
   }
 
   componentWillReceiveProps(nextprops) {
     if(this.state.paramSetName == '' && nextprops.paramsets.length>0)
-      this.fieldChanged({target:{value:nextprops.paramsets[0]}});    
+      this.fieldChanged({target:{name: 'pset', value:nextprops.paramsets[0]}});    
   }
+
+  generateTransactions = (e) => {
+    window.open(urls.transactions+"/"+this.state.paramSetName+"/"+this.state.seqNum);
+  }
+
 
   parameters = this.props.sourceParameters;  
 
@@ -55,6 +65,7 @@ export class GenTransactionsPage extends Component {
     const options = {
       afterDeleteRow: this.props.actions.deleteParameters
     };
+
     console.log("GenTransactionsPage render")
     return (
       <div>
@@ -90,12 +101,19 @@ export class GenTransactionsPage extends Component {
       <br/>
       <form className="form-inline">
         <div className="form-group">
+          <label htmlFor="seqNum">Номер файла генерации</label>
+          <Input type="text" name="seqNum" value={this.state.seqNum} onChange={this.fieldChanged}/>
+        </div>
+        {' '}
+        <div className="form-group">
           <label htmlFor="paramSetName">Имя набора параметров</label>
           <Input type="text" name="paramSetName" value={this.state.paramSetName} onChange={this.fieldChanged}/>
         </div>
+        <br/>
         {' '}
-        <Button bsStyle="success" onClick={this.saveParamSet}>Сохранить</Button>{' '}
-        <Button bsStyle="warning">Генерация</Button>{' '}
+        <Button bsStyle="success" onClick={this.saveParamSet}>Сохранить</Button>
+        {' '}
+        <Button bsStyle="warning" onClick={this.generateTransactions}>Генерация</Button>{' '}
       </form>
       </div>
     );
