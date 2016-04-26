@@ -1,4 +1,6 @@
-const backendBase = "http://10.63.36.110:30981/";
+let backendBase = "http://localhost:30981/";
+if(process.env.NODE_ENV === 'production') 
+	backendBase = "/";
 const urls = {
 	dictionaries : {
 		mcccodes : backendBase+"dictionaries/mccodes",
