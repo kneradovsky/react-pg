@@ -37,7 +37,7 @@ export class MCCodeSelect extends React.Component {
 	}
 
 	render() {
-		const options = this.props.mccodes.map((e) => {return {name: e.description_ru, id: e.mcc, ...e};})
+		const options = this.props.mccodes.map((e) => {return {name: e.description_ru, id: e.mcc, ...e};});
 		return (
 			<div className="input-group">
 				<span className="input-group-addon">MCC</span>

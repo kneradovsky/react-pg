@@ -6,7 +6,8 @@ import * as actions from '../actions/dataactions';
 import { Button, Input } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import NewParamForm from '../components/NewParamForm';
-import urls from '../constants/backend';
+import GenParametersForm from '../components/GenParametersForm';
+
 
 
 export class GenTransactionsPage extends Component {
@@ -17,41 +18,18 @@ export class GenTransactionsPage extends Component {
     sourceParameters: this.props.sourceParameters
   }
 
-
   componentDidMount() {
     this.props.actions.getMCCCodes();
     this.props.actions.getCurrencies();
     this.props.actions.getParameterSetNames();
   }
 
-  saveParamSet = (e) => {
-    const nameval = this.state.paramSetName;
-      const ps = this.props.sourceParameters.map((p,i) => {return {name:nameval, ...p};});
+  saveParamSet = (psetName) => {
+    const nameval = psetName;
+      const ps = this.props.sourceParameters.map((p,i) => {return {...p,name:nameval};});
     this.props.actions.saveParameterSet(ps);
   }
 
-
-  loadParamsSet = (e) => {
-    this.props.actions.getParameterSet(this.state.paramSetName);
-  }
-
-  fieldChanged = (e) => {
-    let newState = {...this.state};
-    if(e.target.name=='pset')
-      newState['paramSetName']=e.target.value;
-    else 
-      newState[e.target.name]=e.target.value;
-    this.setState(newState);
-  }
-
-  componentWillReceiveProps(nextprops) {
-    if(this.state.paramSetName == '' && nextprops.paramsets.length>0)
-      this.fieldChanged({target:{name: 'pset', value:nextprops.paramsets[0]}});    
-  }
-
-  generateTransactions = (e) => {
-    window.open(urls.transactions+"/"+this.state.paramSetName+"/"+this.state.seqNum);
-  }
 
 
   parameters = this.props.sourceParameters;  
@@ -79,30 +57,11 @@ export class GenTransactionsPage extends Component {
       <br/>
       </div>
       <div className="col-md-8 col-lg-8">
-      <form className="form-inline">
-        <div className="form-group">
-          <Input type="select" addonBefore="Набор" name="pset" value={this.state.paramSetName} onChange={this.fieldChanged} on>
-            {this.props.paramsets.map((e,i)=><option value={e}>{e}</option>)}
-          </Input>
-        </div>
-        {' '}
-        <Button bsStyle="success" onClick={this.loadParamsSet}>Загрузить</Button>{' '}
-        </form>
-        <br/>
-        {' '}
-        <form className="form-inline">
-        <div className="form-group">
-          <Input type="text" addonBefore="Имя набора" name="paramSetName" value={this.state.paramSetName} onChange={this.fieldChanged}/>{' '}
-          <Input type="text" addonBefore="Номер файла" name="seqNum" value={this.state.seqNum} onChange={this.fieldChanged} size="2"/>{' '}
-        </div>
-        <div className="form-group">          
-          <Button bsStyle="success" onClick={this.saveParamSet}>Сохранить</Button>{' '}
-          <Button bsStyle="warning" onClick={this.generateTransactions}>Генерация</Button>{' '}
-        </div>
-        {' '}
-        <br/>
-      </form>
-
+      <GenParametersForm
+        paramsets = {this.props.paramsets}
+        loadParametersSet = {this.props.actions.getParameterSet}
+        saveParametersSet = {this.saveParamSet}
+      />
       <br/>
       <BootstrapTable 
         selectRow={selectRowProp} 

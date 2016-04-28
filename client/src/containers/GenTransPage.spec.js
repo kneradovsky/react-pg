@@ -3,7 +3,8 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import { GenTransactionsPage } from './GenTransactionsPage';
 import { NewParamForm } from '../components/NewParamForm';
-import { Button } from 'react-bootstrap';
+import {GenParametersForm } from '../components/GenParametersForm';
+
 
 describe('<GenTransactionsPage />', () => {
   it('should contain <Button />', () => {
@@ -15,7 +16,7 @@ describe('<GenTransactionsPage />', () => {
     };
     const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState} paramsets={[]}/>);
 
-    expect(wrapper.find(Button)).to.be.length(3);
+    expect(wrapper.find(GenParametersForm)).to.be.length(1);
   });
 
 });

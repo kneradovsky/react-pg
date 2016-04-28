@@ -53,7 +53,6 @@ export class NewParamForm extends React.Component {
 	}
 
 	render() {
-		console.log("NewParamForm render");
 		//const mccCodesData = this.props.mccodes.map((c)=><option value={c.mcc}>{c.mcc+' '+c.description_ru}</option>);
 		//
 		return(
@@ -76,7 +75,6 @@ export class NewParamForm extends React.Component {
 
 
 function mapStateToProps(state) {
-  console.log(state);
   return {
     mccodes: state.mccodes,
     currencies: state.currencies
