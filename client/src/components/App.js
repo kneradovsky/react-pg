@@ -6,8 +6,7 @@ const App = (props) => {
   return (
     <div className="container-fluid">
     <div className="row">
-    <div className="col-xl-1">{' '}</div>
-    <div className="col-xl-10 container-fluid">
+    <div className="col-xl-1 container-fluid">
     <Nav bsStyle="pills">    	
       <NavItem href="/">Генерация транзакций</NavItem>
     </Nav>

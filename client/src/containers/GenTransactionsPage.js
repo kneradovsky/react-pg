@@ -68,23 +68,41 @@ export class GenTransactionsPage extends Component {
 
     console.log("GenTransactionsPage render")
     return (
-      <div>
+    <div className="container-fluid">
+    <div className="row">
+    <div className="col-md-4 col-lg-4">
       <NewParamForm
         addNewParameter = {this.props.actions.addNewParameter}
         mccodes = {this.props.mccodes}
         currencies = {this.props.currencies}
       />
       <br/>
+      </div>
+      <div className="col-md-8 col-lg-8">
       <form className="form-inline">
         <div className="form-group">
-          <label htmlFor="paramSets">Загрузить</label>
           <Input type="select" addonBefore="Набор" name="pset" value={this.state.paramSetName} onChange={this.fieldChanged} on>
             {this.props.paramsets.map((e,i)=><option value={e}>{e}</option>)}
           </Input>
         </div>
         {' '}
         <Button bsStyle="success" onClick={this.loadParamsSet}>Загрузить</Button>{' '}
+        </form>
+        <br/>
+        {' '}
+        <form className="form-inline">
+        <div className="form-group">
+          <Input type="text" addonBefore="Имя набора" name="paramSetName" value={this.state.paramSetName} onChange={this.fieldChanged}/>{' '}
+          <Input type="text" addonBefore="Номер файла" name="seqNum" value={this.state.seqNum} onChange={this.fieldChanged} size="2"/>{' '}
+        </div>
+        <div className="form-group">          
+          <Button bsStyle="success" onClick={this.saveParamSet}>Сохранить</Button>{' '}
+          <Button bsStyle="warning" onClick={this.generateTransactions}>Генерация</Button>{' '}
+        </div>
+        {' '}
+        <br/>
       </form>
+
       <br/>
       <BootstrapTable 
         selectRow={selectRowProp} 
@@ -98,23 +116,8 @@ export class GenTransactionsPage extends Component {
           <TableHeaderColumn dataField="currency">Валюта</TableHeaderColumn>      
           <TableHeaderColumn dataField="amount">Количество</TableHeaderColumn>      
       </BootstrapTable>
-      <br/>
-      <form className="form-inline">
-        <div className="form-group">
-          <label htmlFor="seqNum">Номер файла генерации</label>
-          <Input type="text" name="seqNum" value={this.state.seqNum} onChange={this.fieldChanged}/>
-        </div>
-        {' '}
-        <div className="form-group">
-          <label htmlFor="paramSetName">Имя набора параметров</label>
-          <Input type="text" name="paramSetName" value={this.state.paramSetName} onChange={this.fieldChanged}/>
-        </div>
-        <br/>
-        {' '}
-        <Button bsStyle="success" onClick={this.saveParamSet}>Сохранить</Button>
-        {' '}
-        <Button bsStyle="warning" onClick={this.generateTransactions}>Генерация</Button>{' '}
-      </form>
+      </div>
+      </div>
       </div>
     );
   }
