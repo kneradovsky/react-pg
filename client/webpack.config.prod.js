@@ -21,7 +21,7 @@ export default {
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin(GLOBALS), //Tells React to build in prod mode. https://facebook.github.io/react/downloads.html
-    new ExtractTextPlugin('styles.css'),
+    //new ExtractTextPlugin('styles.css'),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin()
   ],
@@ -31,8 +31,11 @@ export default {
       {test: /\.(jpe?g|png|gif|svg|eot|ttf|woff|woff2)$/i, loaders: ['file']},
       {
         test: /(\.css|\.scss)$/,
-        include: path.join(__dirname, 'src'),
-        loader: ExtractTextPlugin.extract("css?sourceMap!sass?sourceMap")
+        //loader: ExtractTextPlugin.extract("style-loader", "css-loader!saas-loader")
+        //include: path.join(__dirname, 'src'),
+        //loader: ExtractTextPlugin.extract("css?sourceMap!sass?sourceMap")
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+	
       }
     ]
   }
