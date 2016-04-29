@@ -8,26 +8,30 @@ export class GenParametersForm extends Component {
   static defaultProps = {
     paramsets :[],
     loadParametersSet : (psetName) => {},
-    saveParametersSet : (psetName) => {}
+    saveParametersSet : (psetName) => {},
+    deleteParametersSet: (psetName) => {}
   }
 
   static propTypes = {
     paramsets: PropTypes.object.isRequired,
     loadParametersSet: PropTypes.func.isRequired,
-    saveParametersSet: PropTypes.func.isRequired
+    saveParametersSet: PropTypes.func.isRequired,
+    deleteParametersSet: PropTypes.func.isRequired
   }
   
   state= {
     paramsets : this.props.paramsets,
-    paramSetName : this.props.paramsets[0] || ''
+    paramSetName : this.props.paramsets[0] || '',
+    seqNum : '1'
   }
 
   componentWillReceiveProps(nextprops) {
-    if(this.state.paramSetName == '' && nextprops.paramsets.length>0) {
-      const psname = nextprops.paramsets[0];
-      this.fieldChanged({target:{name: 'pset', value:psname}});
-      this.props.loadParametersSet(psname);
-    }
+    if(nextprops.paramsets.length>0)
+      if(this.state.paramSetName == '' || nextprops.paramsets.indexOf(this.state.paramSetName)==-1) {
+        const psname = nextprops.paramsets[0];
+        this.fieldChanged({target:{name: 'pset', value:psname}});
+        this.props.loadParametersSet(psname);
+      }
   }
 
 
@@ -47,6 +51,11 @@ export class GenParametersForm extends Component {
   loadParamSet = (e) => {
     this.props.loadParametersSet(this.state.paramSetName);
   }  
+
+  deleteParamSet = (e) => {
+    if(confirm(`Удалить набор ${this.state.paramSetName}?`))
+      this.props.deleteParametersSet(this.state.paramSetName);
+  }
 
   generateTransactions = (e) => {
     window.open(urls.transactions+"/"+this.state.paramSetName+"/"+this.state.seqNum);
@@ -72,7 +81,7 @@ export class GenParametersForm extends Component {
         <div className="form-group">
           <Input type="text" addonBefore="Имя набора" name="paramSetName" value={this.state.paramSetName} onChange={this.fieldChanged}/>{' '}
           <Button bsStyle="success" onClick={this.saveParamSet}>Сохранить</Button>{' '}
-          <Button bsStyle="danger" onClick={this.saveParamSet}>Удалить</Button>
+          <Button bsStyle="danger" onClick={this.deleteParamSet}>Удалить</Button>
         </div>
         {' '}
         <div className="form-group">

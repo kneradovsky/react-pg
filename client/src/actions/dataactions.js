@@ -44,3 +44,8 @@ export function selectParameterSet(paramsets,name) {
 export function saveParameterSet(data) {
 	return {type: types.SAVE_PARAMETER_SETS, promise: request.post(urls.parameters,data)};
 }
+
+
+export function deleteParameterSet(name) {
+	return {type: types.DELETE_PARAMETER_SETS, promise: request.delete(`${urls.parameters}/${name}`)};
+}

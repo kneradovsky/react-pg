@@ -7,14 +7,12 @@ import { Button, Input } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import NewParamForm from '../components/NewParamForm';
 import GenParametersForm from '../components/GenParametersForm';
-
+import * as actionTypes from '../constants/actionTypes';
 
 
 export class GenTransactionsPage extends Component {
   
   state = {
-    paramSetName : '',
-    seqNum : '1',
     sourceParameters: this.props.sourceParameters
   }
 
@@ -25,11 +23,17 @@ export class GenTransactionsPage extends Component {
   }
 
   saveParamSet = (psetName) => {
-    const nameval = psetName;
-      const ps = this.props.sourceParameters.map((p,i) => {return {...p,name:nameval};});
-    this.props.actions.saveParameterSet(ps);
+    const ps = this.props.sourceParameters.map((p,i) => {return {...p,name:psetName};});
+    this.props.actions.saveParameterSet(ps); 
+    if(this.props.paramsets.indexOf(psetName)==-1) //doesn't exist in the array
+      this.props.optimistic.updateParamsets(this.props.paramsets.concat(psetName)) //add it locally
   }
 
+  deleteParamSet = (psetName) =>  {
+    this.props.actions.deleteParameterSet(psetName);
+    const filtered =this.props.paramsets.filter(i => i!=psetName);
+    this.props.optimistic.updateParamsets(filtered); //delete paramset name from the list
+  }
 
 
   parameters = this.props.sourceParameters;  
@@ -61,6 +65,8 @@ export class GenTransactionsPage extends Component {
         paramsets = {this.props.paramsets}
         loadParametersSet = {this.props.actions.getParameterSet}
         saveParametersSet = {this.saveParamSet}
+        deleteParametersSet = {this.deleteParamSet}
+        updateParamsets = {this.props.optimistic.updateParamsets}
       />
       <br/>
       <BootstrapTable 
@@ -84,6 +90,7 @@ export class GenTransactionsPage extends Component {
 
 GenTransactionsPage.propTypes = {
   actions: PropTypes.object.isRequired,
+  optimistic: PropTypes.object.isRequired,
   sourceParameters: PropTypes.array.isRequired,
   mccodes: PropTypes.array.isRequired,
   currencies: PropTypes.array.isRequired,
@@ -102,7 +109,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(actions, dispatch)
+    actions: bindActionCreators(actions, dispatch),
+    optimistic: {
+      updateMCCCodes: (codes) => {dispatch({type: actionTypes.GET_MCC_CODES, res: {data:codes}});},
+      updateParamsets: (names) => {dispatch({type: actionTypes.GET_PARAMETER_SETS_NAMES, res: {data:names}});}
+    }
   };
 }
 
