@@ -73,7 +73,7 @@ export class NewParamForm extends React.Component {
 }
 
 
-
+/*
 function mapStateToProps(state) {
   return {
     mccodes: state.mccodes,
@@ -89,6 +89,6 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(NewParamForm);
+*/
 
-
-//export default NewParamForm;
+export default NewParamForm;

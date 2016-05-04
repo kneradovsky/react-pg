@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"pa",
+				"paramsets"
+			],
+			[
+				"up",
+				"updateParamsets"
+			],
+			[
+				"dele",
+				"deleteParametersSet"
+			],
+			[
+				"update",
+				"updateParamsets"
+			],
+			[
+				"fil",
+				"filtered"
+			],
+			[
+				"p",
+				"psetName"
+			],
+			[
+				"delete",
+				"deleteParameterSet"
+			],
+			[
 				"lo",
 				"loadParamsSet"
 			],
@@ -14,10 +42,6 @@
 			[
 				"parm",
 				"paramSetName"
-			],
-			[
-				"pa",
-				"paramsets"
 			],
 			[
 				"sta",
@@ -73,10 +97,6 @@
 			],
 			[
 				"paramS",
-				"paramSetName"
-			],
-			[
-				"p",
 				"paramSetName"
 			],
 			[
@@ -159,31 +179,7 @@
 			"file": "client/src/containers/GenTransactionsPage.js",
 			"settings":
 			{
-				"buffer_size": 3437,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/src/components/GenParametersForm.js",
-			"settings":
-			{
-				"buffer_size": 2760,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/src/components/NewParamForm.js",
-			"settings":
-			{
-				"buffer_size": 2548,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/src/containers/GenTransPage.spec.js",
-			"settings":
-			{
-				"buffer_size": 667,
+				"buffer_size": 4249,
 				"line_ending": "Windows"
 			}
 		},
@@ -196,29 +192,42 @@
 			}
 		},
 		{
-			"file": "client/src/reducers/dictionaries.js",
-			"settings":
-			{
-				"buffer_size": 593,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "client/src/components/App.js",
-			"settings":
-			{
-				"buffer_size": 532,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "/* Variables */\n$vin-blue: #5bb7db;\n$vin-green: #60b044;\n$vin-red: #ff0000;\n\n/* Styles */\nbody {\n  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  line-height: 1.4em;\n  color: #4d4d4d;\n  min-width: 230px;\n  max-width: 1200px;\n  margin: 0 auto;\n  -webkit-font-smoothing: antialiased;\n  -moz-font-smoothing: antialiased;\n  font-smoothing: antialiased;\n  font-weight: 300;\n}\n\ntd {\n	padding: 12px;\n}\n\nh2 {\n	color: $vin-blue;\n}\n\n.savings { color: $vin-green; }\n.loss { color: $vin-red; }\ninput.small { width: 46px; }\ntd.fuel-savings-label { width: 175px; }\n\n\n",
 			"file": "client/src/styles/styles.scss",
-			"file_size": 728,
-			"file_write_time": 131063221275313105,
 			"settings":
 			{
-				"buffer_size": 567,
+				"buffer_size": 698,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/webpack.config.prod.js",
+			"settings":
+			{
+				"buffer_size": 1656,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/webpack.config.dev.js",
+			"settings":
+			{
+				"buffer_size": 1361,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/components/GenParametersForm.js",
+			"settings":
+			{
+				"buffer_size": 3107,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "client/src/components/NewParamForm.js",
+			"settings":
+			{
+				"buffer_size": 2548,
 				"line_ending": "Windows"
 			}
 		}
@@ -279,15 +288,23 @@
 		"/C/dev/cards/client/src/components",
 		"/C/dev/cards/client/src/constants",
 		"/C/dev/cards/client/src/containers",
+		"/C/dev/cards/client/src/reducers",
+		"/C/dev/cards/client/src/styles",
 		"/C/dev/cards/client/tools"
 	],
 	"file_history":
 	[
+		"/C/dev/cards/client/src/reducers/dictionaries.js",
+		"/C/dev/cards/client/src/constants/actionTypes.js",
 		"/C/dev/cards/client/src/actions/dataactions.js",
+		"/C/dev/cards/client/src/containers/GenTransPage.spec.js",
+		"/C/dev/cards/client/src/styles/styles.scss",
+		"/C/dev/cards/client/src/reducers/index.js",
+		"/C/dev/cards/client/src/index.js",
+		"/C/dev/cards/client/src/components/App.js",
 		"/C/dev/cards/client/src/components/MCCodeSelect.js",
 		"/C/dev/cards/client/src/components/NewParamForm.js",
 		"/C/dev/cards/client/src/constants/backend.js",
-		"/C/dev/cards/client/src/components/App.js",
 		"/C/dev/cards/client/tools/srcServer.js",
 		"/C/dev/cards/client/package.json",
 		"/C/dev/cards/client/tools/build.js",
@@ -295,18 +312,12 @@
 		"/C/dev/cards/client/tools/deploy.js",
 		"/C/dev/cards/client/cardservicesServer.js",
 		"/C/dev/cards/client/webpack.config.dev.js",
-		"/C/dev/cards/client/src/constants/actionTypes.js",
 		"/C/dev/cards/client/src/index.html",
 		"/C/dev/cards/client/src/lib/promiseMiddleware.js",
-		"/C/dev/cards/client/src/index.js",
 		"/C/dev/cards/client/.babelrc",
-		"/C/dev/cards/client/src/styles/styles.scss",
 		"/C/dev/cards/client/src/store/configureStore.dev.js",
 		"/C/dev/cards/client/src/routes.js",
-		"/C/dev/cards/client/src/reducers/dictionaries.js",
-		"/C/dev/cards/client/src/containers/GenTransPage.spec.js",
 		"/C/dev/cards/client/src/reducers/sourceParameters.js",
-		"/C/dev/cards/client/src/reducers/index.js",
 		"/C/dev/cards/client/src/containers/GenTransactionsPage.js",
 		"/C/dev/cards/client/src/actions/parameters.js",
 		"/C/dev/cards/client/src/store/configureStore.prod.js",
@@ -379,7 +390,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
@@ -388,15 +399,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3437,
+						"buffer_size": 4249,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								944,
-								944
+								3486,
+								3486
 							]
 						],
 						"settings":
@@ -405,6 +416,35 @@
 							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1881.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "client/src/index.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 795,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								550,
+								550
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -414,20 +454,50 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "client/src/components/GenParametersForm.js",
+					"buffer": 2,
+					"file": "client/src/styles/styles.scss",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2760,
+						"buffer_size": 698,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2290,
-								2290
+								697,
+								697
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Sass/Syntaxes/Sass.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "client/webpack.config.prod.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1656,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1653,
+								1653
 							]
 						],
 						"settings":
@@ -438,14 +508,75 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 969.0,
+						"translation.y": 171.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 4,
+					"file": "client/webpack.config.dev.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1361,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "client/src/components/GenParametersForm.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3107,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								929,
+								929
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 171.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "client/src/components/NewParamForm.js",
 					"semi_transient": false,
 					"settings":
@@ -468,159 +599,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 958.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "client/src/containers/GenTransPage.spec.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 667,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								656,
-								656
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "client/src/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 795,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								549,
-								549
-							]
-						],
-						"settings":
-						{
-							"auto_complete": false,
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax"
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "client/src/reducers/dictionaries.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 593,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "client/src/components/App.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 532,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								243,
-								285
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "client/src/styles/styles.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 567,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								567,
-								567
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
 					"type": "text"
 				}
 			]

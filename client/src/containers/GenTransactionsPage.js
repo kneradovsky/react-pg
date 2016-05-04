@@ -16,6 +16,16 @@ export class GenTransactionsPage extends Component {
     sourceParameters: this.props.sourceParameters
   }
 
+  static propTypes = {
+    actions: PropTypes.object.isRequired,
+    optimistic: PropTypes.object.isRequired,
+    sourceParameters: PropTypes.array.isRequired,
+    mccodes: PropTypes.array.isRequired,
+    currencies: PropTypes.array.isRequired,
+    paramsets : PropTypes.array.isRequired,
+    paramSetName : PropTypes.object.isRequired
+};  
+
   componentDidMount() {
     this.props.actions.getMCCCodes();
     this.props.actions.getCurrencies();
@@ -49,6 +59,7 @@ export class GenTransactionsPage extends Component {
     };
 
     console.log("GenTransactionsPage render")
+    console.log(this.props)
     return (
     <div className="container-fluid">
     <div className="row">
@@ -88,19 +99,11 @@ export class GenTransactionsPage extends Component {
   }
 }
 
-GenTransactionsPage.propTypes = {
-  actions: PropTypes.object.isRequired,
-  optimistic: PropTypes.object.isRequired,
-  sourceParameters: PropTypes.array.isRequired,
-  mccodes: PropTypes.array.isRequired,
-  currencies: PropTypes.array.isRequired,
-  paramsets : PropTypes.array.isRequired,
-  paramSetName : PropTypes.object.isRequired
-};
+
 
 function mapStateToProps(state) {
   return {
-    mccodes: state.mcccodes,
+    mccodes: state.mccodes,
     currencies: state.currencies,
     sourceParameters : state.sourceParameters,
     paramsets : state.paramsets

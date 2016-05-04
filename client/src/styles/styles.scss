@@ -3,6 +3,11 @@ $vin-blue: #5bb7db;
 $vin-green: #60b044;
 $vin-red: #ff0000;
 
+/* imports */
+@import "~react-bootstrap-table/css/react-bootstrap-table.min.css";
+@import "~react-super-select/lib/react-super-select.css";
+
+
 /* Styles */
 body {
   font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -30,7 +35,8 @@ h2 {
 input.small { width: 46px; }
 td.fuel-savings-label { width: 175px; }
 
-/*
-@import "~react-bootstrap-table/css/react-bootstrap-table.min.css";
-@import "~react-super-select/lib/react-super-select.css";
-*/
+
+
+.r-ss-dropdown {
+  position: relative;
+}
