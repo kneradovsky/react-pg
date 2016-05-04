@@ -3,7 +3,9 @@ import cardServicesServer from '../cardservicesServer';
 import colors from 'colors';
 import fs from 'fs';
 
-fs.createReadStream(`${config.output.path}/${config.output.filename}`).pipe(fs.createWriteStream(`${cardServicesServer.jsPath}/${config.output.filename}`));
-fs.createReadStream(`${config.output.path}/${config.output.filename}.map`).pipe(fs.createWriteStream(`${cardServicesServer.jsPath}/${config.output.filename}.map`));
-  
- console.log(`Bundle copied to ${cardServicesServer.jsPath}/${config.output.filename}`.green);
+[config.output.filename,config.output.filename+".map",'styles.css'].every((it,ind,arr)=> {
+	fs.createReadStream(`${config.output.path}/${it}`).pipe(fs.createWriteStream(`${cardServicesServer.jsPath}/${it}`));	
+	console.log(`Bundle chunk copied to ${cardServicesServer.jsPath}/${it}`.green);
+	return true;
+});
+
