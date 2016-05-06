@@ -7,8 +7,9 @@ const urls = {
 		currencies: backendBase+"dictionaries/currencies"
 	},
 	parameters : backendBase+"data/parameters",
-	transactions: backendBase+"data/transactions"
-
+	transactions: backendBase+"data/transactions",
+	cards : backendBase+"data/cards",
+	baseUrl : backendBase
 };
 
 export default urls;
