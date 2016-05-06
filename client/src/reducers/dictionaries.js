@@ -9,13 +9,6 @@ function reduceDict(acttype) {
 	};
 }
 
-function mcccodesFun(state = [], action) {
-	switch(action.type) {
-		case acttypes.GET_MCC_CODES: return action.res.data;
-	}
-	return state;
-}
-
 export default function dictionaries(state = [], action) {
 	return {
 		mccodes : reduceDict(acttypes.GET_MCC_CODES),

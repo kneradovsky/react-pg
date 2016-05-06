@@ -8,6 +8,7 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import NewParamForm from '../components/NewParamForm';
 import GenParametersForm from '../components/GenParametersForm';
 import * as actionTypes from '../constants/actionTypes';
+import PageLoader from '../components/Loader';
 
 
 export class GenTransactionsPage extends Component {
@@ -23,7 +24,7 @@ export class GenTransactionsPage extends Component {
     mccodes: PropTypes.array.isRequired,
     currencies: PropTypes.array.isRequired,
     paramsets : PropTypes.array.isRequired,
-    paramSetName : PropTypes.object.isRequired
+    requestState : PropTypes.object.isRequired
 };  
 
   componentDidMount() {
@@ -59,9 +60,13 @@ export class GenTransactionsPage extends Component {
     };
 
     console.log("GenTransactionsPage render")
-    console.log(this.props)
+    console.log(this.props.requestState)
     return (
     <div className="container-fluid">
+    <PageLoader 
+      inprog = {this.props.requestState.inprog}
+      errors = {this.props.requestState.errors}
+    />    
     <div className="row">
     <div className="col-md-4 col-lg-4">
       <NewParamForm
@@ -106,7 +111,8 @@ function mapStateToProps(state) {
     mccodes: state.mccodes,
     currencies: state.currencies,
     sourceParameters : state.sourceParameters,
-    paramsets : state.paramsets
+    paramsets : state.paramsets,
+    requestState : state.requestState
   };
 }
 
