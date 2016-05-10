@@ -2,6 +2,7 @@ let backendBase = "http://localhost:30981/";
 if(process.env.NODE_ENV === 'production') 
 	backendBase = "/";
 const urls = {
+	baseUrl : backendBase,
 	dictionaries : {
 		mcccodes : backendBase+"dictionaries/mccodes",
 		currencies: backendBase+"dictionaries/currencies"
@@ -10,9 +11,8 @@ const urls = {
 	paramtmpls : backendBase+"data/parameterTemplates",
 	transactions: backendBase+"data/transactions",
 	cards : backendBase+"data/cards",
-	tariff : backendBase+"dictionaries/tariff",
-	cardrules: backendBase+"data/cardrules",
-	baseUrl : backendBase
+	tariffs : backendBase+"dictionaries/tariff",
+	cardrules: backendBase+"data/cardrules"
 };
 
 export default urls;

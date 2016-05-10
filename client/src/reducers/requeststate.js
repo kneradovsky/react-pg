@@ -1,8 +1,8 @@
-
+/* eslint "no-console":"off" */
 const loaderInitial = {
 	inprog : 0,
 	errors : []
-}
+};
 
 export default function checkRequestState(state = loaderInitial, action) {
 	let newState = {...state};
@@ -16,7 +16,7 @@ export default function checkRequestState(state = loaderInitial, action) {
 			newState.inprog--;
 			break;
 		case 'error':
-			console.log(action.error)
+			console.log(action.error);
 			newState.inprog--;
 			newState.errors = newState.errors.concat(action.error);
 			break;

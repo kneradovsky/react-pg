@@ -23,7 +23,7 @@ export class PageLoader extends Component {
 			</h3>
 			<ErrorComponent errors={this.props.errors}/>
 			</div>
-			)
+			);
 	}	
 }
 
@@ -38,7 +38,7 @@ class ErrorComponent extends Component {
 		...this.props
 	}
 	render() {
-		if(this.props.errors.length==0) return (<div></div>)
+		if(this.props.errors.length==0) return (<div></div>);
 		return (
 			<div className="alert alert-danger" role="alert">
 			<h4>
@@ -46,7 +46,7 @@ class ErrorComponent extends Component {
 			Ошибки обмена
 			</h4>
 			<ul className="list-group">
-			{this.props.errors.map((err,i) => <li className="list-group-item">{err.toString()}</li>)}
+			{this.props.errors.map((err,i) => <li className="list-group-item">{Object.keys(err).map((k,v) => `${k}:${err[k]}\n`)}</li>)}
 			</ul>
 			</div>
 		);

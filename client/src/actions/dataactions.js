@@ -2,6 +2,40 @@ import * as types from '../constants/actionTypes';
 import urls from '../constants/backend';
 import request from 'axios';
 
+export const entities = {
+	card : {},
+	tariff : {}
+};
+
+function getActionTypeByOper(entity,operation) {
+	const label = entity.toString().toUpperCase();
+	switch(operation) {
+		case 'index': return 'LOAD_'+label+'S';
+		case 'get' : return 'GET_'+label;
+		case 'post': return 'SAVE_'+label;
+		case 'delete': return 'DELETE_'+label;
+	}
+}
+
+export function entityOperation(entity,operation,data) {
+	let atype,url;
+	if(entities[entity] === undefined) throw new Error(`Entity ${entity} is undefined`);
+	if(entities[entity][operation] == undefined) {// use defaults
+		atype = getActionTypeByOper(entity,operation);
+		url = urls[entity+'s'];
+	} else {
+		atype = entities[entity][operation].type;
+		url = entities[entity][operation].url;
+	}
+	switch(operation) {
+		case 'index': return {type: atype, promise: request.get(url)};
+		case 'get' : return {type: atype, promise: request.get(`${url}/${data}`)};
+		case 'post': return {type: atype, promise: request.post(url,data)};
+		case 'delete': return {type: atype, promise: request.delete(`${url}/${data}`)};
+	}
+
+}
+
 export function generateTransactions(settings) {
 	return { type: types.GENERATE_TRANSACTIONS, settings };
 }
@@ -49,3 +83,5 @@ export function saveParameterSet(data) {
 export function deleteParameterSet(name) {
 	return {type: types.DELETE_PARAMETER_SETS, promise: request.delete(`${urls.parameters}/${name}`)};
 }
+
+
