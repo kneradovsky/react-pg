@@ -11,7 +11,7 @@ export default (
   <Route path="/" component={App}>
     <IndexRoute component={GenTransactionsPage} />
     <Route path="/Home/Cards" component={CardsPage}/>
-    <Route path="/Home/Tariffs" component={CardRulesPage}/>
+    <Route path="/Home/CardRules" component={CardRulesPage}/>
     <Route path="*" component={NotFoundPage} />
   </Route>
 );

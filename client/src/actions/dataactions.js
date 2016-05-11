@@ -11,7 +11,7 @@ export const entities = {
 			request: (data) => request.get(urls.parameters)
 		}
 	},
-	cardrules: {
+	cardrule: {
 		validate: {
 			type: types.VALIDATE_CARDRULE,
 			request: (data) => request.post(urls.cardrules_validate,data)

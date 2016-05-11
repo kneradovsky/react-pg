@@ -2,43 +2,43 @@ import React, { Component, PropTypes } from 'react';
 import { Button, Input } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import urls from '../constants/backend';
 import * as actions from '../actions/dataactions';
-import CardForm from '../components/CardForm';
+import * as atypes from '../constants/actionTypes';
+import CardRuleForm from '../components/CardRuleForm';
 import PageLoader from '../components/Loader';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import {entities  as dataEntities} from '../actions/dataactions';
 
 
 export class CardRulesPage extends Component {
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
-		cards: PropTypes.array.isRequired,
 		tariffs: PropTypes.array.isRequired,
-		requestState : PropTypes.object.isRequired
+		requestState : PropTypes.object.isRequired,
+		cardrules: PropTypes.array.isRequired,
+		cards : PropTypes.array.isRequired
 	}
 	static defaultProps = {
 		actions: {},
+		tariffs: [],
+		requestState: {},
 		cards : [],
-		tariffs: []
+		cardrules: []
 	}
 	state = {
-		currentCard: {}
-	}
-	updateActiveCard = (card) => {
-			const newState = {
-				...this.state,
-				currentCard: card
-			}
-			this.setState(newState);
+		cardRule : {}
 	}
 	componentDidMount() {
-		this.props.actions.entityOperation('card','index');
+		this.props.actions.entityOperation('cardrule','index');
 		this.props.actions.entityOperation('tariff','index');
+	}	
+	updateActiveRule = (rule) => {
+		this.setState({...this.state,cardRule:rule});
 	}
-	saveCard = (card) => {
-		this.updateActiveCard(card);
-		this.props.actions.entityOperation('card','post',card,()=>actions.entityOperation('card','index'));
+	saveRule = (rule) => {
+		this.props.actions.entityOperation('cardrule','post',rule,()=>actions.entityOperation('cardrule','index'));
+	}
+	deleteRule = (rule)	=> {
+		this.props.actions.entityOperation('cardrule','delete',rule.id,()=>actions.entityOperation('cardrule','index'));
 	}
 	render() {
 	const selectRowProp = {
@@ -48,7 +48,7 @@ export class CardRulesPage extends Component {
 	};
 	const options = {
 		afterDeleteRow: (row) => {},
-		onRowClick : (row) => {this.updateActiveCard(row);}
+		onRowClick : (row) => {this.updateActiveRule(row)}
 	};		
 	return(
 
@@ -58,31 +58,37 @@ export class CardRulesPage extends Component {
 			errors = {this.props.requestState.errors}
 		/>  	
 		<div className="row">
-			<div className="col-md-8 col-lg-8">
+			<div className="col-md-5 col-lg-5">
+			<CardRuleForm
+				activeRule={this.state.cardRule}
+				tariffs={this.props.tariffs}
+				saveRule={this.saveRule}
+				deleteRule={this.deleteRule}
+				validateRule={this.validateRule}
+			/>
+			<br/>
 			<BootstrapTable 
 			selectRow={selectRowProp} 
-			data={this.props.cards} 
+			data={this.props.cardrules} 
 			striped={true} hover={true} deleteRow={true}
+			options={options}>
+				<TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
+				<TableHeaderColumn dataField="name">Имя</TableHeaderColumn>
+				<TableHeaderColumn dataField="tariffid">Тариф</TableHeaderColumn>      
+				<TableHeaderColumn dataField="expression">Выражение</TableHeaderColumn>      
+			</BootstrapTable>
+			</div>
+			<div className="col-md-7 col-lg-7">
+			<BootstrapTable 
+			data={this.props.cards} 
+			striped={true} hover={true} deleteRow={false}
 			options={options}>
 				<TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
 				<TableHeaderColumn dataField="number">Номер</TableHeaderColumn>
 				<TableHeaderColumn dataField="expdate">Дата истечения</TableHeaderColumn>
-				<TableHeaderColumn dataField="tariffid">Тариф</TableHeaderColumn>      
+				<TableHeaderColumn dataField="tariff">Тариф</TableHeaderColumn>      
 				<TableHeaderColumn dataField="balance">Баланс</TableHeaderColumn>      
 			</BootstrapTable>
-			<br/>
-
-				<form method="post" action={`${urls.cards}/uploadcsv`} encType="multipart/form-data" className="form-inline" >
-					<Input type="file" addonBefore="список карт" name="csvfile"/>
-					<Button type="submit" bsStyle="default">Отправить</Button>
-				</form>
-			</div>
-			<div className="col-md-4 col-lg-4">
-				<CardForm 
-					card={this.state.currentCard}
-					saveCard={this.saveCard}
-					tariffs={this.props.tariffs}
-				></CardForm>
 			</div>
 		</div>
 	</div>
@@ -93,18 +99,15 @@ export class CardRulesPage extends Component {
 function mapStateToProps(state) {
   return {
 	tariffs: state.tariffs,
-	cards: state.cards,
-//	currentCard : state.activeCard,
+	cardrules: state.cardrules,
 	requestState : state.requestState
 	};
 }
 
 function mapDispatchToProps(dispatch) {
-  return {
-		actions: bindActionCreators(actions, dispatch),
-		optimistic: {
-		}
-	};
+	return {
+		actions: bindActionCreators(actions, dispatch)
+	}
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(CardRulesPage);
