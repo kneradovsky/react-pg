@@ -15,24 +15,29 @@ export class CardsPage extends Component {
 		actions: PropTypes.object.isRequired,
 		cards: PropTypes.array.isRequired,
 		tariffs: PropTypes.array.isRequired,
-		currentCard : PropTypes.object.isRequired,
 		requestState : PropTypes.object.isRequired
 	}
 	static defaultProps = {
-		currentCard : {},
 		actions: {},
 		cards : [],
 		tariffs: []
-
 	}
 	state = {
 		currentCard: {}
+	}
+	updateActiveCard = (card) => {
+			const newState = {
+				...this.state,
+				currentCard: card
+			}
+			this.setState(newState);
 	}
 	componentDidMount() {
 		this.props.actions.entityOperation('card','index');
 		this.props.actions.entityOperation('tariff','index');
 	}
 	saveCard = (card) => {
+		this.updateActiveCard(card);
 		this.props.actions.entityOperation('card','post',card);
 	}
 	render() {
@@ -43,13 +48,7 @@ export class CardsPage extends Component {
 	};
 	const options = {
 		afterDeleteRow: (row) => {},
-		onRowClick : (row) => {
-			const newState = {
-				...this.state,
-				currentCard: row
-			}
-			this.setState(newState);
-		}
+		onRowClick : (row) => {this.updateActiveCard(row);}
 	};		
 	return(
 
@@ -95,7 +94,7 @@ function mapStateToProps(state) {
   return {
 	tariffs: state.tariffs,
 	cards: state.cards,
-	currentCard : state.activeCard,
+//	currentCard : state.activeCard,
 	requestState : state.requestState
 	};
 }

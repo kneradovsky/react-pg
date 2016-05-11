@@ -8,18 +8,16 @@ export default function promiseMiddleware() {
 
     const REQUEST = type + '_REQUEST';
     const FAILURE = type + '_FAILURE';
-    console.log(REQUEST);
+
     next({ ...rest, status: 'request', type: REQUEST });
 
     return promise
       .then(res => {
-        console.log(SUCCESS);
         next({ ...rest, res, status: 'done', type: SUCCESS });
 
         return true;
       })
       .catch(error => {
-        console.log(FAILURE);
         next({ ...rest, error: error, status: 'error', type: FAILURE });
         console.log(error);
 

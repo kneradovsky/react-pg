@@ -28,7 +28,6 @@ export class CardForm extends React.Component {
 	componentWillReceiveProps(nextprops) {
 		this.setState(this.initialState(nextprops.card));
 	}
-
 	fieldChanged = (e) => {
 		let newState = {...this.state};
 		newState[e.target.name]=e.target.value;

@@ -5,13 +5,18 @@
 import { createStore, compose, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
 import promiseMiddleware from '../lib/promiseMiddleware';
+import chainMiddleware from '../lib/chainMiddleware';
 
 export default function configureStore(initialState) {
-  let store = applyMiddleware(promiseMiddleware)(createStore)(rootReducer, initialState,compose(
+  //let store = createStore(rootReducer,initialState,applyMiddleware(chainMiddleware,promiseMiddleware))
+
+  let store = applyMiddleware(promiseMiddleware,chainMiddleware)(createStore)(rootReducer, initialState,compose(
     // Add other middleware on this line...
     window.devToolsExtension ? window.devToolsExtension() : f => f //add support for Redux dev tools
     )
   );
+
+
 
   if (module.hot) {
     // Enable Webpack hot module replacement for reducers
