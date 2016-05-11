@@ -10,6 +10,7 @@ const App = (props) => {
     <Nav bsStyle="pills">    	
       <NavItem href="/">Генерация транзакций</NavItem>
       <NavItem href="/Home/Cards">Карты</NavItem>
+      <NavItem href="/Home/CardRules">Правила отбора карт</NavItem>
     </Nav>
       <br/>
       {props.children}

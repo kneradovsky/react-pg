@@ -10,7 +10,7 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import {entities  as dataEntities} from '../actions/dataactions';
 
 
-export class CardsPage extends Component {
+export class CardRulesPage extends Component {
 	static propTypes = {
 		actions: PropTypes.object.isRequired,
 		cards: PropTypes.array.isRequired,
@@ -107,4 +107,4 @@ function mapDispatchToProps(dispatch) {
 	};
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(CardsPage);
+export default connect(mapStateToProps,mapDispatchToProps)(CardRulesPage);

@@ -12,7 +12,8 @@ const urls = {
 	transactions: backendBase+"data/transactions",
 	cards : backendBase+"data/cards",
 	tariffs : backendBase+"dictionaries/tariff",
-	cardrules: backendBase+"data/cardrules"
+	cardrules: backendBase+"data/cardrules",
+	cardrules_validate: backendBase+"data/cardrules/validate"
 };
 
 export default urls;

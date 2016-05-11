@@ -4,7 +4,13 @@ import request from 'axios';
 
 export const entities = {
 	card : {},
-	tariff : {}
+	tariff : {},
+	cardrules: {
+		validate: {
+			type: types.VALIDATE_CARDRULE,
+			url: urls.cardrules_validate
+		}
+	}
 };
 
 function getActionTypeByOper(entity,operation) {
@@ -17,7 +23,7 @@ function getActionTypeByOper(entity,operation) {
 	}
 }
 
-export function entityOperation(entity,operation,data) {
+export function entityOperation(entity,operation,data,chainlink) {
 	let atype,url;
 	if(entities[entity] === undefined) throw new Error(`Entity ${entity} is undefined`);
 	if(entities[entity][operation] == undefined) {// use defaults
@@ -28,10 +34,10 @@ export function entityOperation(entity,operation,data) {
 		url = entities[entity][operation].url;
 	}
 	switch(operation) {
-		case 'index': return {type: atype, promise: request.get(url)};
-		case 'get' : return {type: atype, promise: request.get(`${url}/${data}`)};
-		case 'post': return {type: atype, promise: request.post(url,data)};
-		case 'delete': return {type: atype, promise: request.delete(`${url}/${data}`)};
+		case 'index': return {type: atype, promise: request.get(url), link: chainlink};
+		case 'get' : return {type: atype, promise: request.get(`${url}/${data}`),link: chainlink};
+		case 'post': return {type: atype, promise: request.post(url,data), link: chainlink};
+		case 'delete': return {type: atype, promise: request.delete(`${url}/${data}`),link: chainlink};
 	}
 
 }

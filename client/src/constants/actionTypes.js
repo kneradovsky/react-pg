@@ -19,3 +19,9 @@ export const LOAD_TARIFFS = 'LOAD_TARIFFS';
 export const GET_TARIFF = 'GET_TARIFF';
 export const SAVE_TARIFF = 'SAVE_TARIFF';
 export const DELETE_TARIFF = 'DELETE_TARIFF';
+//card rules 
+export const LOAD_CARDRULES = 'LOAD_CARDRULES';
+export const GET_CARDRULE = 'GET_CARDRULE';
+export const SAVE_CARDRULE = 'SAVE_CARDRULE';
+export const DELETE_CARDRULE = 'DELETE_CARDRULE';
+export const VALIDATE_CARDRULE = 'VALIDATE_CARDRULE';
