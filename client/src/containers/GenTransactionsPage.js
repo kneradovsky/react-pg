@@ -28,20 +28,20 @@ export class GenTransactionsPage extends Component {
 };  
 
   componentDidMount() {
-    this.props.actions.getMCCCodes();
-    this.props.actions.getCurrencies();
-    this.props.actions.getParameterSetNames();
+    this.props.actions.entityOperation('mccodes','index');
+    this.props.actions.entityOperation('currencies','index');
+    this.props.actions.entityOperation('parameter','names');
   }
 
   saveParamSet = (psetName) => {
     const ps = this.props.sourceParameters.map((p,i) => {return {...p,name:psetName};});
-    this.props.actions.saveParameterSet(ps); 
+    this.props.actions.entityOperation('parameter','post',ps);
     if(this.props.paramsets.indexOf(psetName)==-1) //doesn't exist in the array
       this.props.optimistic.updateParamsets(this.props.paramsets.concat(psetName)) //add it locally
   }
 
   deleteParamSet = (psetName) =>  {
-    this.props.actions.deleteParameterSet(psetName);
+    this.props.actions.entityOperation('parameter','delete',psetName);
     const filtered =this.props.paramsets.filter(i => i!=psetName);
     this.props.optimistic.updateParamsets(filtered); //delete paramset name from the list
   }
@@ -59,8 +59,6 @@ export class GenTransactionsPage extends Component {
       afterDeleteRow: this.props.actions.deleteParameters
     };
 
-    console.log("GenTransactionsPage render")
-    console.log(this.props.requestState)
     return (
     <div className="container-fluid">
     <PageLoader 
