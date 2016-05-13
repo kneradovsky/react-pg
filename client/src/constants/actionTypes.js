@@ -15,6 +15,7 @@ export const LOAD_CARDS = 'LOAD_CARDS';
 export const GET_CARD = 'GET_CARDS';
 export const SAVE_CARD = 'SAVE_CARD';
 export const DELETE_CARD = 'DELETE_CARD';
+export const CARD_VALIDATE_EXPRESSION = 'CARD_VALIDATE_EXPRESSION';
 //tariffs
 export const LOAD_TARIFFS = 'LOAD_TARIFFS';
 export const GET_TARIFF = 'GET_TARIFF';

@@ -23,6 +23,7 @@ export default function dictionaries(state = [], action) {
 		mccodes : reduceDict(acttypes.GET_MCC_CODES),
 		currencies: reduceDict(acttypes.GET_CURRENCIES_CODES),
 		paramsets: reduceDict(acttypes.GET_PARAMETER_SETS_NAMES),
+		cardsByExpression: reduceDict(acttypes.CARD_VALIDATE_EXPRESSION),
 		...entOpers
 	};
 }

@@ -11,16 +11,19 @@ export class NewParamForm extends React.Component {
 		param : {
 			type:'P',
 			mcc:'7211',
-			card:'4234567812345678',
+			card:'',
 			currency:'810',
-			amount:'1000'		
+			amount:'1000',
+			expression: ''		
 		},
 		mccodes : [],
 		currencies: [],
-		addNewParameter: (p) => {}
+		addNewParameter: (p) => {},
+		validateExpression: (p) => {}
 	}
 	static propTypes = {
 		addNewParameter: PropTypes.func.isRequired,
+		validateExpression: PropTypes.func.isRequired,
 		mccodes: PropTypes.array.isRequired,
 		param : PropTypes.object.isRequired,
 		currencies: PropTypes.array.isRequired
@@ -52,6 +55,10 @@ export class NewParamForm extends React.Component {
 		this.setState(newState);
 	}
 
+	checkExpression = (e) => {
+		this.props.validateExpression(this.state);
+	}
+
 	render() {
 		//const mccCodesData = this.props.mccodes.map((c)=><option value={c.mcc}>{c.mcc+' '+c.description_ru}</option>);
 		//
@@ -62,33 +69,16 @@ export class NewParamForm extends React.Component {
 			</Input>
 			<MCCodeSelect mccodes={this.props.mccodes} onSelectionChange={this.mccCodeSelected}/>
 			<Input type="text" name="card" addonBefore="Карта" value={this.state.card} onChange={this.fieldChanged}/>
+			<Input type="text" name="expression" addonBefore="Отбор карты" value={this.state.expression} onChange={this.fieldChanged}/>
 			<Input type="select" name="currency" addonBefore="Валюта" value={this.state.currency} onChange={this.fieldChanged}>
 				{this.props.currencies.map((cur)=> <option value={cur.code}>{cur.name}</option>)}
 			</Input>
 			<Input type="text" name="amount" addonBefore="Количество" value={this.state.amount} onChange={this.fieldChanged}/>
 			<Button bsStyle="success" onClick={this.addParameter}>Добавить</Button>
+			<Button bsStyle="info" onClick={this.checkExpression}>Отобрать карты</Button>
 		</form>
 		);
 	}
 }
-
-
-/*
-function mapStateToProps(state) {
-  return {
-    mccodes: state.mccodes,
-    currencies: state.currencies
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {};
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NewParamForm);
-*/
 
 export default NewParamForm;

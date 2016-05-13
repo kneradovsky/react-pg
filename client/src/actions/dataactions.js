@@ -3,7 +3,12 @@ import urls from '../constants/backend';
 import request from 'axios';
 
 export const entities = {
-	card : {},
+	card : {
+		validateExpression: {
+			type: types.CARD_VALIDATE_EXPRESSION,
+			request: (data) => request.post(urls.cards+"/validateExpression",data)
+		}
+	},
 	tariff : {},
 	parameter: {
 		names : {

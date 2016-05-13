@@ -46,6 +46,9 @@ export class GenTransactionsPage extends Component {
     this.props.optimistic.updateParamsets(filtered); //delete paramset name from the list
   }
 
+  checkExpression = (param) => {
+    this.props.actions.entityOperation('card','validateExpression',param.expression)
+  }
 
   parameters = this.props.sourceParameters;  
 
@@ -66,15 +69,28 @@ export class GenTransactionsPage extends Component {
       errors = {this.props.requestState.errors}
     />    
     <div className="row">
-    <div className="col-md-4 col-lg-4">
+    <div className="col-md-5 col-lg-5">
       <NewParamForm
         addNewParameter = {this.props.actions.addNewParameter}
+        checkExpression = {this.checkExpression}
         mccodes = {this.props.mccodes}
         currencies = {this.props.currencies}
       />
       <br/>
+      <h4>Карты отобранные по выражению отбора</h4>
+      <BootstrapTable 
+      selectRow={{}} 
+      data={this.props.cardsByExpression} 
+      striped={true} hover={true} deleteRow={false}
+      options={{}}>
+        <TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
+        <TableHeaderColumn dataField="number" width="100">Номер</TableHeaderColumn>
+        <TableHeaderColumn dataField="expdate" width="50">Дата истечения</TableHeaderColumn>
+        <TableHeaderColumn dataField="tariffid">Тариф</TableHeaderColumn>      
+        <TableHeaderColumn dataField="balance">Баланс</TableHeaderColumn>      
+      </BootstrapTable>
       </div>
-      <div className="col-md-8 col-lg-8">
+      <div className="col-md-7 col-lg-7"> 
       <GenParametersForm
         paramsets = {this.props.paramsets}
         loadParametersSet = {this.props.actions.getParameterSet}
@@ -89,11 +105,11 @@ export class GenTransactionsPage extends Component {
         striped={true} hover={true} deleteRow={true}
         options={options}>
           <TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
-          <TableHeaderColumn dataField="type">Тип</TableHeaderColumn>
-          <TableHeaderColumn dataField="mcc">Код</TableHeaderColumn>
-          <TableHeaderColumn dataField="card">Карта</TableHeaderColumn>      
-          <TableHeaderColumn dataField="currency">Валюта</TableHeaderColumn>      
-          <TableHeaderColumn dataField="amount">Количество</TableHeaderColumn>      
+          <TableHeaderColumn dataField="type" width="20">Тип</TableHeaderColumn>
+          <TableHeaderColumn dataField="mcc" width="50">Код</TableHeaderColumn>
+          <TableHeaderColumn dataField="card" width="100">Карта</TableHeaderColumn>      
+          <TableHeaderColumn dataField="currency" width="50">Валюта</TableHeaderColumn>      
+          <TableHeaderColumn dataField="amount" width="100">Количество</TableHeaderColumn>      
       </BootstrapTable>
       </div>
       </div>
@@ -110,7 +126,8 @@ function mapStateToProps(state) {
     currencies: state.currencies,
     sourceParameters : state.sourceParameters,
     paramsets : state.paramsets,
-    requestState : state.requestState
+    requestState : state.requestState,
+    cardsByExpression : state.cardsByExpression
   };
 }
 

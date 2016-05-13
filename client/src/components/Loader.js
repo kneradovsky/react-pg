@@ -13,21 +13,25 @@ export class PageLoader extends Component {
 	state = {
 		...this.props
 	}
+	componentWillReceiveProps(newprops) {
+		this.setState(newprops);
+	}
 	render() {
-		if(this.props.inprog==0 && this.props.errors.length==0) return (<div></div>);
+		if(this.state.inprog==0 && this.state.errors.length==0) return (<div></div>);
 		return (
 			<div className="well loader">
+			<span className="glyphicon glyphicon-remove-circle" style={{'float':'right'}} onClick={(e)=>this.setState({errors:[],inprog:0})}></span>
 			<h3>
 			<span className="glyphicon glyphicon-time"></span>
-			Обмен данными с сервером <span className="badge">{this.props.inprog}</span>
+			Обмен данными с сервером <span className="badge">{this.state.inprog}</span>
 			</h3>
-			<ErrorComponent errors={this.props.errors}/>
+			<ErrorsComponent errors={this.state.errors}/>
 			</div>
 			);
 	}	
 }
 
-class ErrorComponent extends Component {
+class ErrorsComponent extends Component {
 	static defaultProps = {
 		errors : []
 	}
@@ -46,9 +50,28 @@ class ErrorComponent extends Component {
 			Ошибки обмена
 			</h4>
 			<ul className="list-group">
-			{this.props.errors.map((err,i) => <li className="list-group-item">{Object.keys(err).map((k,v) => `${k}:${err[k]}\n`)}</li>)}
+			{this.props.errors.map((err,i) => <ErrorComponent error={err}/>)}
 			</ul>
 			</div>
+		);
+	}
+}
+
+class ErrorComponent extends Component {
+	static defaultProps = {
+		error : {}
+	}
+	static propTypes = {
+		error: PropTypes.object.isRequired
+	}	
+	state = {
+		...this.props
+	}
+	render() {
+		const err = this.props.error;
+		const desc = Object.keys(err).length>0 ? Object.keys(err).map((k,v) => `${k}:${err[k]}\n`) : err.message; 
+		return(
+			<li className="list-group-item">{desc}</li>
 		);
 	}
 }
