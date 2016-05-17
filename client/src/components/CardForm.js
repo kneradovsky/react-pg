@@ -1,3 +1,4 @@
+/* eslint "react/jsx-key":"off", "react/no-set-state":"off" */
 import React, { Component, PropTypes } from 'react';
 import { Button, Input } from 'react-bootstrap';
 import moment  from 'moment';
@@ -13,7 +14,9 @@ export class CardForm extends React.Component {
 		super(props);
 		this.state=this.initialState();
 	}
-
+	componentWillReceiveProps(nextprops) {
+		this.setState(this.initialState(nextprops.card));
+	}
 	initialState(stateFrom=undefined) {
 		let stfrom = stateFrom;
 		if(stfrom === undefined) stfrom=this.props.card;
@@ -25,9 +28,7 @@ export class CardForm extends React.Component {
 			expyear: date.format("YYYY")
 		}; 
 	}
-	componentWillReceiveProps(nextprops) {
-		this.setState(this.initialState(nextprops.card));
-	}
+
 	fieldChanged = (e) => {
 		let newState = {...this.state};
 		newState[e.target.name]=e.target.value;

@@ -14,19 +14,22 @@ export class NewParamForm extends React.Component {
 			card:'',
 			currency:'810',
 			amount:'1000',
-			expression: ''		
+			expression: '',
+			country: 'RUS'		
 		},
 		mccodes : [],
 		currencies: [],
+		countries: [],
 		addNewParameter: (p) => {},
-		validateExpression: (p) => {}
+		checkExpression: (p) => {}
 	}
 	static propTypes = {
 		addNewParameter: PropTypes.func.isRequired,
-		validateExpression: PropTypes.func.isRequired,
+		checkExpression: PropTypes.func.isRequired,
 		mccodes: PropTypes.array.isRequired,
 		param : PropTypes.object.isRequired,
-		currencies: PropTypes.array.isRequired
+		currencies: PropTypes.array.isRequired,
+		countries : PropTypes.array.isRequired
 	}	
 	state = {
 		...this.props.param,
@@ -56,7 +59,7 @@ export class NewParamForm extends React.Component {
 	}
 
 	checkExpression = (e) => {
-		this.props.validateExpression(this.state);
+		this.props.checkExpression(this.state);
 	}
 
 	render() {
@@ -74,6 +77,9 @@ export class NewParamForm extends React.Component {
 				{this.props.currencies.map((cur)=> <option value={cur.code}>{cur.name}</option>)}
 			</Input>
 			<Input type="text" name="amount" addonBefore="Количество" value={this.state.amount} onChange={this.fieldChanged}/>
+			<Input type="select" addonBefore="Страна" name="country" value={this.state.country} onChange={this.fieldChanged}>
+				{this.props.countries.map((e,i) => <option value={e.code}>{e.name}</option>)}
+			</Input>			
 			<Button bsStyle="success" onClick={this.addParameter}>Добавить</Button>
 			<Button bsStyle="info" onClick={this.checkExpression}>Отобрать карты</Button>
 		</form>

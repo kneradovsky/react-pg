@@ -12,32 +12,39 @@ import PageLoader from '../components/Loader';
 
 
 export class GenTransactionsPage extends Component {
-  
-  state = {
-    sourceParameters: this.props.sourceParameters
-  }
-
   static propTypes = {
     actions: PropTypes.object.isRequired,
     optimistic: PropTypes.object.isRequired,
     sourceParameters: PropTypes.array.isRequired,
     mccodes: PropTypes.array.isRequired,
     currencies: PropTypes.array.isRequired,
+    countries: PropTypes.array.isRequired,
     paramsets : PropTypes.array.isRequired,
-    requestState : PropTypes.object.isRequired
-};  
-
+    requestState : PropTypes.object.isRequired,
+    cardsByExpression : PropTypes.array.isRequired
+  }
+  static defaultProps = {
+    optimistic : {},
+    actions : {
+      entityOperation : (a,b,c) => {}
+    }
+  }  
+  
+  state = {
+    sourceParameters: this.props.sourceParameters
+  }
   componentDidMount() {
     this.props.actions.entityOperation('mccodes','index');
     this.props.actions.entityOperation('currencies','index');
     this.props.actions.entityOperation('parameter','names');
+    this.props.actions.entityOperation('country','index');
   }
 
   saveParamSet = (psetName) => {
     const ps = this.props.sourceParameters.map((p,i) => {return {...p,name:psetName};});
     this.props.actions.entityOperation('parameter','post',ps);
     if(this.props.paramsets.indexOf(psetName)==-1) //doesn't exist in the array
-      this.props.optimistic.updateParamsets(this.props.paramsets.concat(psetName)) //add it locally
+      this.props.optimistic.updateParamsets(this.props.paramsets.concat(psetName)); //add it locally
   }
 
   deleteParamSet = (psetName) =>  {
@@ -47,7 +54,7 @@ export class GenTransactionsPage extends Component {
   }
 
   checkExpression = (param) => {
-    this.props.actions.entityOperation('card','validateExpression',param.expression)
+    this.props.actions.entityOperation('card','validateExpression',param);
   }
 
   parameters = this.props.sourceParameters;  
@@ -75,6 +82,7 @@ export class GenTransactionsPage extends Component {
         checkExpression = {this.checkExpression}
         mccodes = {this.props.mccodes}
         currencies = {this.props.currencies}
+        countries = {this.props.countries}
       />
       <br/>
       <h4>Карты отобранные по выражению отбора</h4>
@@ -84,10 +92,10 @@ export class GenTransactionsPage extends Component {
       striped={true} hover={true} deleteRow={false}
       options={{}}>
         <TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
-        <TableHeaderColumn dataField="number" width="100">Номер</TableHeaderColumn>
+        <TableHeaderColumn dataField="number" width="80">Номер</TableHeaderColumn>
         <TableHeaderColumn dataField="expdate" width="50">Дата истечения</TableHeaderColumn>
-        <TableHeaderColumn dataField="tariffid">Тариф</TableHeaderColumn>      
-        <TableHeaderColumn dataField="balance">Баланс</TableHeaderColumn>      
+        <TableHeaderColumn dataField="tariffname" width="50">Тариф</TableHeaderColumn>      
+        <TableHeaderColumn dataField="balance" width="50">Баланс</TableHeaderColumn>      
       </BootstrapTable>
       </div>
       <div className="col-md-7 col-lg-7"> 
@@ -108,8 +116,10 @@ export class GenTransactionsPage extends Component {
           <TableHeaderColumn dataField="type" width="20">Тип</TableHeaderColumn>
           <TableHeaderColumn dataField="mcc" width="50">Код</TableHeaderColumn>
           <TableHeaderColumn dataField="card" width="100">Карта</TableHeaderColumn>      
+          <TableHeaderColumn dataField="expression" width="100">Условие</TableHeaderColumn>      
           <TableHeaderColumn dataField="currency" width="50">Валюта</TableHeaderColumn>      
-          <TableHeaderColumn dataField="amount" width="100">Количество</TableHeaderColumn>      
+          <TableHeaderColumn dataField="amount" width="100">Количество</TableHeaderColumn>
+          <TableHeaderColumn dataField="country" width="100">Страна</TableHeaderColumn>
       </BootstrapTable>
       </div>
       </div>
@@ -119,7 +129,6 @@ export class GenTransactionsPage extends Component {
 }
 
 
-
 function mapStateToProps(state) {
   return {
     mccodes: state.mccodes,
@@ -127,7 +136,8 @@ function mapStateToProps(state) {
     sourceParameters : state.sourceParameters,
     paramsets : state.paramsets,
     requestState : state.requestState,
-    cardsByExpression : state.cardsByExpression
+    cardsByExpression : state.cardsByExpression,
+    countries: state.countries
   };
 }
 

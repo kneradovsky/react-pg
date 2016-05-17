@@ -8,9 +8,9 @@ const App = (props) => {
     <div className="row">
     <div className="col-xl-1 container-fluid">
     <Nav bsStyle="pills">    	
-      <NavItem href="/">Генерация транзакций</NavItem>
+      <NavItem href="/">Параметры генерации транзакций</NavItem>
+      <NavItem href="/Home/Transactions">Наборы транзакций</NavItem>
       <NavItem href="/Home/Cards">Карты</NavItem>
-      <NavItem href="/Home/CardRules">Правила отбора карт</NavItem>
     </Nav>
       <br/>
       {props.children}

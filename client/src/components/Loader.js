@@ -1,4 +1,4 @@
-/* eslint "react/jsx-key":"off" */
+/* eslint "react/jsx-key":"off", "react/no-set-state":"off", "react/no-multi-comp": "off", "no-console":"off" */
 import React, { Component, PropTypes } from 'react';
 
 export class PageLoader extends Component {
@@ -69,9 +69,10 @@ class ErrorComponent extends Component {
 	}
 	render() {
 		const err = this.props.error;
-		const desc = Object.keys(err).length>0 ? Object.keys(err).map((k,v) => `${k}:${err[k]}\n`) : err.message; 
+		const desc = err.data===undefined ? err.message : err.data.Message; 
+		console.log(err.data);
 		return(
-			<li className="list-group-item">{desc}</li>
+			<li className="list-group-item">Status: {err.status}, Text: {err.statusText}, Message:{desc}</li>
 		);
 	}
 }

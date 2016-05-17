@@ -1,15 +1,18 @@
 import * as acttypes from '../constants/actionTypes';
 import {entities  as dataEntities} from '../actions/dataactions';
 
-function reduceDict(acttype) {
-	return (state = [], action) => {
-		switch(action.type) {
-			case acttype:  
-				console.log(acttype);
-				return action.res.data;
-		}
-		return state;
+function reduceDict(acttype,initial) {
+	const initialState = initial || [];
+	return (state = initialState, action) => {
+		if(action.type!=acttype) return state;
+		return action.res.data;
 	};
+}
+
+function reduceCardsByExpression(state=[], action) {
+	if(action.type!=acttypes.CARD_VALIDATE_EXPRESSION) return state;
+	const retval = action.res.data.map((card,i) => Object.assign(card,{tariffname:card.tariff.name}));
+	return retval;
 }
 
 export default function dictionaries(state = [], action) {
@@ -23,7 +26,9 @@ export default function dictionaries(state = [], action) {
 		mccodes : reduceDict(acttypes.GET_MCC_CODES),
 		currencies: reduceDict(acttypes.GET_CURRENCIES_CODES),
 		paramsets: reduceDict(acttypes.GET_PARAMETER_SETS_NAMES),
-		cardsByExpression: reduceDict(acttypes.CARD_VALIDATE_EXPRESSION),
+		cardsByExpression: reduceCardsByExpression,
+		countries: reduceDict(acttypes.LOAD_COUNTRIES),
+		transactionset : reduceDict(acttypes.GET_TRANSACTIONSET),
 		...entOpers
 	};
 }

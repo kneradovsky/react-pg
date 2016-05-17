@@ -7,7 +7,6 @@ import * as actions from '../actions/dataactions';
 import CardForm from '../components/CardForm';
 import PageLoader from '../components/Loader';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
-import {entities  as dataEntities} from '../actions/dataactions';
 
 
 export class CardsPage extends Component {
@@ -25,17 +24,18 @@ export class CardsPage extends Component {
 	state = {
 		currentCard: {}
 	}
-	updateActiveCard = (card) => {
-			const newState = {
-				...this.state,
-				currentCard: card
-			}
-			this.setState(newState);
-	}
+
 	componentDidMount() {
 		this.props.actions.entityOperation('card','index');
 		this.props.actions.entityOperation('tariff','index');
 	}
+	updateActiveCard = (card) => {
+			const newState = {
+				...this.state,
+				currentCard: card
+			};
+			this.setState(newState);
+	}	
 	saveCard = (card) => {
 		this.updateActiveCard(card);
 		this.props.actions.entityOperation('card','post',card,()=>actions.entityOperation('card','index'));
@@ -82,11 +82,11 @@ export class CardsPage extends Component {
 					card={this.state.currentCard}
 					saveCard={this.saveCard}
 					tariffs={this.props.tariffs}
-				></CardForm>
+				/>
 			</div>
 		</div>
 	</div>
-	)
+	);
 	}
 }
 

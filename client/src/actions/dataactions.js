@@ -6,10 +6,16 @@ export const entities = {
 	card : {
 		validateExpression: {
 			type: types.CARD_VALIDATE_EXPRESSION,
-			request: (data) => request.post(urls.cards+"/validateExpression",data)
+			request: (data) => request.post(urls.cards+"/cardsByExpression",data)
 		}
 	},
 	tariff : {},
+	country: {
+		index: {
+			type : types.LOAD_COUNTRIES,
+			url: urls.countries
+		}
+	},
 	parameter: {
 		names : {
 			type : types.GET_PARAMETER_SETS_NAMES,
@@ -33,7 +39,8 @@ export const entities = {
 			type: types.GET_MCC_CODES,
 			url: urls.mcccodes
 		}
-	}
+	},
+	transactionset: {}
 
 };
 
@@ -69,6 +76,7 @@ export function entityOperation(entity,operation,data,chainlink) {
 	} else {
 		atype = entities[entity][operation].type;
 		url = entities[entity][operation].url;
+		if(atype===undefined) atype = getActionTypeByOper(entity,operation);
 		if(url === undefined) url = urls[entity+'s'];
 		if(!(entities[entity][operation].request === undefined))
 			arequest = entities[entity][operation].request(data);
@@ -78,10 +86,14 @@ export function entityOperation(entity,operation,data,chainlink) {
 		case 'get' : return {type: atype, promise: request.get(`${url}/${data}`),link: chainlink};
 		case 'post': return {type: atype, promise: request.post(url,data), link: chainlink};
 		case 'delete': return {type: atype, promise: request.delete(`${url}/${data}`),link: chainlink};
-		default: if(arequest===undefined) throw new Error(`Request property is undefined for operation ${operation} on ${entity}`)
+		default: if(arequest===undefined) throw new Error(`Request property is undefined for operation ${operation} on ${entity}`);
 			return {type: atype, promise: arequest, link: chainlink};
 	}
 
+}
+
+export function emitAction(actiontype,actdata) {
+	return {...actdata,type:actiontype};
 }
 
 export function generateTransactions(settings) {
@@ -109,14 +121,5 @@ export function selectParameterSet(paramsets,name) {
 	return {type: types.SELECT_PARAMETER_SET, payload: {paramsets, name}};
 }
 
-/*
-export function saveParameterSet(data) {
-	return {type: types.SAVE_PARAMETER_SET, promise: request.post(urls.parameters,data)};
-}
 
-
-export function deleteParameterSet(name) {
-	return {type: types.DELETE_PARAMETER_SET, promise: request.delete(`${urls.parameters}/${name}`)};
-}
-*/
 

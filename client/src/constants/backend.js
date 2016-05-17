@@ -8,10 +8,12 @@ const urls = {
 	parameters : backendBase+"data/parameters",
 	paramtmpls : backendBase+"data/parameterTemplates",
 	transactions: backendBase+"data/transactions",
+	transactionsets: backendBase+"data/transactions",
 	cards : backendBase+"data/cards",
 	tariffs : backendBase+"dictionaries/tariff",
 	cardrules: backendBase+"data/cardrules",
-	cardrules_validate: backendBase+"data/cardrules/validate"
+	cardrules_validate: backendBase+"data/cardrules/validate",
+	countries: backendBase+"dictionaries/countries"
 };
 
 export default urls;

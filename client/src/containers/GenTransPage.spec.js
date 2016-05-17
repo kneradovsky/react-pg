@@ -14,7 +14,7 @@ describe('<GenTransactionsPage />', () => {
     const appState = { 
       paramsets : []
     };
-    const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState} paramsets={[]}/>);
+    const wrapper = shallow(<GenTransactionsPage actions={actions} appState={appState} paramsets={[]} requestState={{}}/>);
 
     expect(wrapper.find(GenParametersForm)).to.be.length(1);
   });
