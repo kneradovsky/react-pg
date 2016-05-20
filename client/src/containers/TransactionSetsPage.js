@@ -8,6 +8,7 @@ import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import * as actionTypes from '../constants/actionTypes';
 import * as dataactions from '../actions/dataactions';
 import PageLoader from '../components/Loader';
+import GenerateFile from '../components/GenerateFile';
 
 export class TransactionSetsPage extends Component {
 	static propTypes = {
@@ -70,6 +71,7 @@ export class TransactionSetsPage extends Component {
 		</div>
 		<div className="col-md-10 col-lg-10"> 
 		<h4>Набор транзакций для {this.state.psetName}</h4>
+		<GenerateFile paramSetName={this.state.psetName}/>
 		<BootstrapTable 
 		selectRow={{}} 
 		data={this.props.transactionset} 

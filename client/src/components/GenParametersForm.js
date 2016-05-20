@@ -1,7 +1,7 @@
 /* eslint "react/jsx-key":"off" */
 import React, { Component, PropTypes } from 'react';
 import { Button, Input } from 'react-bootstrap';
-import urls from '../constants/backend';
+import GenerateFile from '../components/GenerateFile';
 
 export class GenParametersForm extends Component {
 
@@ -57,12 +57,6 @@ export class GenParametersForm extends Component {
       this.props.deleteParametersSet(this.state.paramSetName);
   }
 
-  generateTransactions = (e) => {
-    window.open(urls.transactions+"/"+this.state.paramSetName+"/"+this.state.seqNum);
-  }
-
-
-
   render() {
     return(
       <div>
@@ -84,10 +78,7 @@ export class GenParametersForm extends Component {
           <Button bsStyle="danger" onClick={this.deleteParamSet}>Удалить</Button>
         </div>
         {' '}
-        <div className="form-group">
-          <Input type="text" addonBefore="Номер файла" name="seqNum" value={this.state.seqNum} onChange={this.fieldChanged} size="2"/>{' '}
-          <Button bsStyle="warning" onClick={this.generateTransactions}>Генерация</Button>{' '}
-        </div>
+        <GenerateFile paramSetName={this.state.paramSetName}/>
         {' '}
         <br/>
       </form>
