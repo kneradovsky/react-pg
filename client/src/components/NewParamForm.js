@@ -76,7 +76,7 @@ export class NewParamForm extends React.Component {
 			<Input type="select" name="currency" addonBefore="Валюта" value={this.state.currency} onChange={this.fieldChanged}>
 				{this.props.currencies.map((cur)=> <option value={cur.code}>{cur.name}</option>)}
 			</Input>
-			<Input type="text" name="amount" addonBefore="Количество" value={this.state.amount} onChange={this.fieldChanged}/>
+			<Input type="text" name="amount" addonBefore="Сумма" value={this.state.amount} onChange={this.fieldChanged}/>
 			<Input type="select" addonBefore="Страна" name="country" value={this.state.country} onChange={this.fieldChanged}>
 				{this.props.countries.map((e,i) => <option value={e.code}>{e.name}</option>)}
 			</Input>			

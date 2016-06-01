@@ -1,0 +1,30 @@
+{
+  "name": "redents",
+  "version": "1.0.0",
+  "description": "Redux middlewares and helpers to access server data",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r should -R spec -t 10000"
+  },
+  "devDependencies": {
+    "mocha": "^2.1.0",
+    "should": "^4.6.1",
+    "supertest": "^0.15.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kneradovsky/react-pg.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "Promise",
+    "Middleware"
+  ],
+  "author": "Konstantin Neradovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kneradovsky/react-pg/issues"
+  },
+  "homepage": "https://github.com/kneradovsky/react-pg#readme"
+}

@@ -2,9 +2,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import * as actions from '../actions/dataactions';
 import { Button, Input } from 'react-bootstrap';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
+import moment from 'moment';
+
+import * as actions from '../actions/dataactions';
 import NewParamForm from '../components/NewParamForm';
 import GenParametersForm from '../components/GenParametersForm';
 import * as actionTypes from '../constants/actionTypes';
@@ -92,10 +94,10 @@ export class GenTransactionsPage extends Component {
       striped={true} hover={true} deleteRow={false}
       options={{}}>
         <TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
-        <TableHeaderColumn dataField="number" width="80">Номер</TableHeaderColumn>
-        <TableHeaderColumn dataField="expdate" width="50">Дата истечения</TableHeaderColumn>
-        <TableHeaderColumn dataField="tariffname" width="50">Тариф</TableHeaderColumn>      
-        <TableHeaderColumn dataField="balance" width="50">Баланс</TableHeaderColumn>      
+        <TableHeaderColumn dataField="number" width="120">Номер</TableHeaderColumn>
+        <TableHeaderColumn dataField="expdate" width="50" dataFormat={(cell,row) => moment(cell,"YYYY-MM-DD-HH:mm:ss").format("MM/YY")}>Дата истечения</TableHeaderColumn>
+        <TableHeaderColumn dataField="tariffname" width="100">Тариф</TableHeaderColumn>      
+        <TableHeaderColumn dataField="balance" width="100">Баланс</TableHeaderColumn>      
       </BootstrapTable>
       </div>
       <div className="col-md-7 col-lg-7"> 
@@ -115,11 +117,11 @@ export class GenTransactionsPage extends Component {
           <TableHeaderColumn isKey={true} dataField="id" hidden={true}>id</TableHeaderColumn>
           <TableHeaderColumn dataField="type" width="20">Тип</TableHeaderColumn>
           <TableHeaderColumn dataField="mcc" width="50">Код</TableHeaderColumn>
-          <TableHeaderColumn dataField="card" width="100">Карта</TableHeaderColumn>      
-          <TableHeaderColumn dataField="expression" width="100">Условие</TableHeaderColumn>      
+          <TableHeaderColumn dataField="card" width="120">Карта</TableHeaderColumn>      
+          <TableHeaderColumn dataField="expression" width="120">Условие</TableHeaderColumn>      
           <TableHeaderColumn dataField="currency" width="50">Валюта</TableHeaderColumn>      
-          <TableHeaderColumn dataField="amount" width="100">Количество</TableHeaderColumn>
-          <TableHeaderColumn dataField="country" width="100">Страна</TableHeaderColumn>
+          <TableHeaderColumn dataField="amount" width="100">Сумма</TableHeaderColumn>
+          <TableHeaderColumn dataField="country" width="50">Страна</TableHeaderColumn>
       </BootstrapTable>
       </div>
       </div>
