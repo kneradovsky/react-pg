@@ -1,7 +1,6 @@
-import * as types from '../constants/actionTypes';
-import urls from '../constants/backend';
 import request from 'axios';
 
+/*
 export const entities = {
 	card : {
 		validateExpression: {
@@ -43,7 +42,7 @@ export const entities = {
 	transactionset: {}
 
 };
-
+*/
 function getActionTypeByOper(entity,operation) {
 	const label = entity.toString().toUpperCase();
 	switch(operation) {
@@ -69,57 +68,31 @@ function getActionTypeByOper(entity,operation) {
 **/
 export function entityOperation(entity,operation,data,chainlink) {
 	let atype,url,arequest;
+	const entities = in_entities.entities;
+	const defaults = in_entities.defaults;
 	if(entities[entity] === undefined) throw new Error(`Entity ${entity} is undefined`);
 	if(entities[entity][operation] === undefined) {// use defaults
 		atype = getActionTypeByOper(entity,operation);
-		url = urls[entity+'s'];
+		url = defaults.baseUrl+'/'+entity+'s';
 	} else {
 		atype = entities[entity][operation].type;
 		url = entities[entity][operation].url;
 		if(atype===undefined) atype = getActionTypeByOper(entity,operation);
-		if(url === undefined) url = urls[entity+'s'];
+		if(url === undefined) defaults.baseUrl+'/'+entity+'s';
 		if(!(entities[entity][operation].request === undefined))
 			arequest = entities[entity][operation].request(data);
 	}
 	switch(operation) {
-		case 'index': return {type: atype, promise: request.get(url), link: chainlink};
-		case 'get' : return {type: atype, promise: request.get(`${url}/${data}`),link: chainlink};
-		case 'post': return {type: atype, promise: request.post(url,data), link: chainlink};
-		case 'delete': return {type: atype, promise: request.delete(`${url}/${data}`),link: chainlink};
+		case 'index': return {type: atype, promise: arequest || request.get(url), link: chainlink};
+		case 'get' : return {type: atype, promise: arequest || request.get(`${url}/${data}`),link: chainlink};
+		case 'post': return {type: atype, promise: arequest || request.post(url,data), link: chainlink};
+		case 'delete': return {type: atype, promise: arequest || request.delete(`${url}/${data}`),link: chainlink};
 		default: if(arequest===undefined) throw new Error(`Request property is undefined for operation ${operation} on ${entity}`);
 			return {type: atype, promise: arequest, link: chainlink};
 	}
 
 }
 
-export function emitAction(actiontype,actdata) {
-	return {...actdata,type:actiontype};
-}
-
-export function generateTransactions(settings) {
-	return { type: types.GENERATE_TRANSACTIONS, settings };
-}
-
-export function addNewParameter(values) {
-	return { type: types.ADD_NEW_PARAMETER, data: values}; 
-}
-
-export function updateParameter(name,value) {
-	return { type: types.UPDATE_PARAMETER, name: name, value:value}; 
-}
-
-export function getParameterSet(name) {
-	return {type: types.GET_PARAMETER_SET, promise:request.get(urls.parameters+'/'+name)};
-}
-
-export function deleteParameters(rowkeys) {
-	return {type: types.DELETE_PARAMETERS, data:rowkeys};
-}
 
 
-export function selectParameterSet(paramsets,name) {
-	return {type: types.SELECT_PARAMETER_SET, payload: {paramsets, name}};
-}
-
-
-
+export default function createEntityOperation = (in_entities) => entityOperation; 
