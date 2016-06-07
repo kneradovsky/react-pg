@@ -1,48 +1,5 @@
 import request from 'axios';
 
-/*
-export const entities = {
-	card : {
-		validateExpression: {
-			type: types.CARD_VALIDATE_EXPRESSION,
-			request: (data) => request.post(urls.cards+"/cardsByExpression",data)
-		}
-	},
-	tariff : {},
-	country: {
-		index: {
-			type : types.LOAD_COUNTRIES,
-			url: urls.countries
-		}
-	},
-	parameter: {
-		names : {
-			type : types.GET_PARAMETER_SETS_NAMES,
-			request: (data) => request.get(urls.parameters)
-		}
-	},
-	cardrule: {
-		validate: {
-			type: types.VALIDATE_CARDRULE,
-			request: (data) => request.post(urls.cardrules_validate,data)
-		}
-	},
-	currencies: {
-		index: {
-			type: types.GET_CURRENCIES_CODES,
-			url: urls.currencies
-		}
-	},
-	mccodes: {
-		index: {
-			type: types.GET_MCC_CODES,
-			url: urls.mcccodes
-		}
-	},
-	transactionset: {}
-
-};
-*/
 function getActionTypeByOper(entity,operation) {
 	const label = entity.toString().toUpperCase();
 	switch(operation) {
@@ -66,10 +23,10 @@ function getActionTypeByOper(entity,operation) {
 *
 * @return action to be dispatched by redux
 **/
-export function entityOperation(entity,operation,data,chainlink) {
+function entityOperation(entity,operation,data,chainlink) {
 	let atype,url,arequest;
-	const entities = in_entities.entities;
-	const defaults = in_entities.defaults;
+	const entities = st_entities.entities;
+	const defaults = st_entities.defaults;
 	if(entities[entity] === undefined) throw new Error(`Entity ${entity} is undefined`);
 	if(entities[entity][operation] === undefined) {// use defaults
 		atype = getActionTypeByOper(entity,operation);
@@ -93,6 +50,9 @@ export function entityOperation(entity,operation,data,chainlink) {
 
 }
 
+let st_entities=undefined;
 
-
-export default function createEntityOperation = (in_entities) => entityOperation; 
+export default function createEntityOperation(in_entities) {
+	st_entities = in_entities;
+	return entityOperation;
+}

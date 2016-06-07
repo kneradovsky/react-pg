@@ -6,10 +6,11 @@
   "scripts": {
     "readme": "node ./node_modules/.bin/node-readme",
     "test": "./node_modules/.bin/mocha --compilers js:babel-register",
-    "build": "npm run test && ./node_modules/.bin/babel -d ./dist ./src"
+    "build": "npm run test && ./node_modules/.bin/babel -d ./dist ./src",
+    "compile": "./node_modules/.bin/babel -d ./dist ./src"
   },
-  "dependecies": {
-    "axios" : "*"
+  "dependencies": {
+    "axios": "^0.12.0"
   },
   "devDependencies": {
     "babel-cli": "^6.3.17",
@@ -22,10 +23,15 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-1": "^6.5.0",
     "babelify": "7.2.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
     "eslint": "*",
-    "node-readme": "^0.1.8",
+    "express": "^4.11.1",
     "mocha": "^2.4.5",
+    "node-readme": "^0.1.8",
     "should": "^4.6.1",
+    "sinon": "^1.17.3",
+    "sinon-chai": "^2.8.0",
     "supertest": "^0.15.0"
   },
   "repository": {
