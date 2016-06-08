@@ -35,7 +35,7 @@ function entityOperation(entity,operation,data,chainlink) {
 		atype = entities[entity][operation].type;
 		url = entities[entity][operation].url;
 		if(atype===undefined) atype = getActionTypeByOper(entity,operation);
-		if(url === undefined) defaults.baseUrl+'/'+entity+'s';
+		if(url===undefined) url = defaults.baseUrl+'/'+entity+'s';
 		if(!(entities[entity][operation].request === undefined))
 			arequest = entities[entity][operation].request(data);
 	}
