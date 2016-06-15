@@ -5,7 +5,7 @@ var async = require('async');
 var express = require('express');
 
 var Configuration = require("./configuration");
-var MCCMod = require("./mccodes")
+var MCCMod = require("./model/mccodes")
 
 var config = new Configuration();
 var mcc = new MCCMod()
@@ -29,6 +29,10 @@ function Server() {
        response = JSON.stringify(retval);
        res.send(response);
     });
+    router.get('/dictionaries/mccodes',function(req,res) {
+        res.send(JSON.stringify(mcc.codes));
+    })
+    
     
     
     server.listen(config.Web.port,config.Web.hostname,511,this.onlistening());
