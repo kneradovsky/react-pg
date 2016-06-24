@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from '../reducers';
-import promiseMiddleware from '../lib/promiseMiddleware';
-import chainMiddleware from '../lib/chainMiddleware';
+import {promiseMiddleware, chainMiddleware} from 'redux-redents';
+
 
 
 export default function configureStore(initialState) {
